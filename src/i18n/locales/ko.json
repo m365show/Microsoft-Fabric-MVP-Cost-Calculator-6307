@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "calculator": "계산기",
+    "features": "기능",
+    "share": "공유"
+  },
+  "hero": {
+    "title": "Microsoft Fabric",
+    "subtitle": "MVP 비용 계산기",
+    "description": "& 피치덱 생성기",
+    "tagline": "🎯 스타트업, 기업 및 컨설턴트를 위한",
+    "subtagline": "비용 계산 → 전문 피치덱 생성 → 구현 파트너에게 전송",
+    "accelerate": "명확성과 속도로 Microsoft Fabric MVP를 가속화하세요",
+    "instantCost": "⚡ 즉시 비용 계산",
+    "instantCostDesc": "인프라, 라이선스, 개발 및 지원에 대한 상세 가격 확인",
+    "autoPdf": "📄 자동 생성 PDF 피치덱",
+    "autoPdfDesc": "다운로드 준비 완료, 투자자 및 파트너 친화적 문서",
+    "emailTemplates": "✉️ 사전 작성된 이메일 템플릿",
+    "emailTemplatesDesc": "Microsoft 파트너, 컨설턴트 및 이해관계자에게 전송 준비 완료",
+    "calculateCosts": "내 MVP 비용 계산",
+    "generatePitch": "피치덱 생성"
+  },
+  "calculator": {
+    "title": "🎯 고급 MVP 사양 생성기",
+    "subtitle": "엔터프라이즈급 Microsoft Fabric 구현을 위한 포괄적 요구사항 캡처",
+    "step": "단계",
+    "of": "의",
+    "complete": "완료",
+    "previous": "이전",
+    "next": "다음",
+    "generateSpecs": "사양 생성",
+    "saving": "저장 중...",
+    "startAgain": "다시 시작"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "calculator": "Kalkylator",
+    "features": "Funktioner",
+    "share": "Dela"
+  },
+  "hero": {
+    "title": "Microsoft Fabric",
+    "subtitle": "MVP Kostnadskalkylator",
+    "description": "& Pitch Deck Generator",
+    "tagline": "🎯 För Startups, Företag & Konsulter",
+    "subtagline": "Beräkna kostnader → Generera professionella pitch decks → Skicka till implementeringspartners",
+    "accelerate": "Accelerera din Microsoft Fabric MVP med tydlighet och hastighet",
+    "instantCost": "⚡ Omedelbar kostnadsberäkning",
+    "instantCostDesc": "Få detaljerade priser för infrastruktur, licensiering, utveckling och support",
+    "autoPdf": "📄 Automatiskt genererad PDF Pitch Deck",
+    "autoPdfDesc": "Nedladdningsklar, investerare- och partnervänlig dokumentation",
+    "emailTemplates": "✉️ Förskrivna e-postmallar",
+    "emailTemplatesDesc": "Redo att skicka till Microsoft-partners, konsulter och intressenter",
+    "calculateCosts": "Beräkna mina MVP-kostnader",
+    "generatePitch": "Generera Pitch Deck"
+  },
+  "calculator": {
+    "title": "🎯 Avancerad MVP-specifikationsgenerator",
+    "subtitle": "Omfattande kravfångst för Microsoft Fabric-implementeringar på företagsnivå",
+    "step": "Steg",
+    "of": "av",
+    "complete": "Komplett",
+    "previous": "Föregående",
+    "next": "Nästa",
+    "generateSpecs": "Generera specifikationer",
+    "saving": "Sparar...",
+    "startAgain": "Börja om"
+  }
+}

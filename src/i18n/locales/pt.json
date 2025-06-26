@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "calculator": "Calculadora",
+    "features": "Recursos",
+    "share": "Compartilhar"
+  },
+  "hero": {
+    "title": "Microsoft Fabric",
+    "subtitle": "Calculadora de custos MVP",
+    "description": "& Gerador de Pitch Deck",
+    "tagline": "🎯 Para Startups, Empresas e Consultores",
+    "subtagline": "Calcular custos → Gerar pitch decks profissionais → Enviar para parceiros de implementação",
+    "accelerate": "Acelere seu MVP Microsoft Fabric com clareza e velocidade",
+    "instantCost": "⚡ Cálculo de custos instantâneo",
+    "instantCostDesc": "Obtenha preços detalhados para infraestrutura, licenças, desenvolvimento e suporte",
+    "autoPdf": "📄 Pitch Deck PDF gerado automaticamente",
+    "autoPdfDesc": "Documentação pronta para download, amigável para investidores e parceiros",
+    "emailTemplates": "✉️ Templates de email pré-escritos",
+    "emailTemplatesDesc": "Prontos para enviar para parceiros Microsoft, consultores e stakeholders",
+    "calculateCosts": "Calcular meus custos MVP",
+    "generatePitch": "Gerar Pitch Deck"
+  },
+  "calculator": {
+    "title": "🎯 Gerador avançado de especificações MVP",
+    "subtitle": "Captura abrangente de requisitos para implementações Microsoft Fabric de nível empresarial",
+    "step": "Passo",
+    "of": "de",
+    "complete": "Completo",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "generateSpecs": "Gerar especificações",
+    "saving": "Salvando...",
+    "startAgain": "Começar novamente"
+  }
+}

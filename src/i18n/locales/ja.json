@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "calculator": "計算機",
+    "features": "機能",
+    "share": "共有"
+  },
+  "hero": {
+    "title": "Microsoft Fabric",
+    "subtitle": "MVPコスト計算機",
+    "description": "& ピッチデック生成器",
+    "tagline": "🎯 スタートアップ、企業、コンサルタント向け",
+    "subtagline": "コストを計算 → プロフェッショナルなピッチデックを生成 → 実装パートナーに送信",
+    "accelerate": "明確性とスピードでMicrosoft Fabric MVPを加速する",
+    "instantCost": "⚡ 瞬時コスト計算",
+    "instantCostDesc": "インフラ、ライセンス、開発、サポートの詳細価格を取得",
+    "autoPdf": "📄 自動生成PDFピッチデック",
+    "autoPdfDesc": "ダウンロード準備完了、投資家・パートナーフレンドリーな文書",
+    "emailTemplates": "✉️ 事前作成メールテンプレート",
+    "emailTemplatesDesc": "Microsoftパートナー、コンサルタント、ステークホルダーへの送信準備完了",
+    "calculateCosts": "MVP コストを計算",
+    "generatePitch": "ピッチデックを生成"
+  },
+  "calculator": {
+    "title": "🎯 高度なMVP仕様生成器",
+    "subtitle": "エンタープライズグレードMicrosoft Fabric実装の包括的要件キャプチャ",
+    "step": "ステップ",
+    "of": "の",
+    "complete": "完了",
+    "previous": "前へ",
+    "next": "次へ",
+    "generateSpecs": "仕様を生成",
+    "saving": "保存中...",
+    "startAgain": "やり直し"
+  }
+}

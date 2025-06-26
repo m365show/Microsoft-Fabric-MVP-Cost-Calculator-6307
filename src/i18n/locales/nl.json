@@ -1,0 +1,35 @@
+{
+  "nav": {
+    "calculator": "Calculator",
+    "features": "Functies",
+    "share": "Delen"
+  },
+  "hero": {
+    "title": "Microsoft Fabric",
+    "subtitle": "MVP Kostencalculator",
+    "description": "& Pitch Deck Generator",
+    "tagline": "🎯 Voor Startups, Bedrijven & Consultants",
+    "subtagline": "Kosten berekenen → Professionele pitch decks genereren → Verzenden naar implementatiepartners",
+    "accelerate": "Versnel je Microsoft Fabric MVP met duidelijkheid en snelheid",
+    "instantCost": "⚡ Directe kostenberekening",
+    "instantCostDesc": "Krijg gedetailleerde prijzen voor infrastructuur, licenties, ontwikkeling & ondersteuning",
+    "autoPdf": "📄 Automatisch gegenereerd PDF Pitch Deck",
+    "autoPdfDesc": "Download-klare, investor- en partnervriendelijke documentatie",
+    "emailTemplates": "✉️ Voorgeschreven e-mailsjablonen",
+    "emailTemplatesDesc": "Klaar om te verzenden naar Microsoft-partners, consultants & stakeholders",
+    "calculateCosts": "Mijn MVP-kosten berekenen",
+    "generatePitch": "Pitch Deck genereren"
+  },
+  "calculator": {
+    "title": "🎯 Geavanceerde MVP-specificatiegenerator",
+    "subtitle": "Uitgebreide vastlegging van vereisten voor Microsoft Fabric-implementaties op ondernemingsniveau",
+    "step": "Stap",
+    "of": "van",
+    "complete": "Voltooid",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "generateSpecs": "Specificaties genereren",
+    "saving": "Opslaan...",
+    "startAgain": "Opnieuw beginnen"
+  }
+}
