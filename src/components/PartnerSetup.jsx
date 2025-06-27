@@ -20,25 +20,21 @@ const PartnerSetup = () => {
     linkedin: '',
     website: '',
     partnerType: '',
-
     // Step 2: Profile Details
     bio: '',
     region: '',
     industry: '',
     logoUrl: '',
     bannerUrl: '',
-
-    // Step 3: Services & Expertise
+    // Step 3: Services & Expertise (SIMPLIFIED - min 1 required)
     services: [],
     keywords: [],
     languages: ['English'], // Default to English
     availability: '',
     pricingModel: '',
-
     // Step 4: Portfolio
     caseStudies: '',
     portfolioLinks: '',
-
     // No more plan selection - all partners are now free/basic tier
     planType: 'basic'
   });
@@ -102,11 +98,7 @@ const PartnerSetup = () => {
   ];
 
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-
+    setFormData(prev => ({ ...prev, [field]: value }));
     // Clear any previous errors when user starts typing
     if (submitError) {
       setSubmitError('');
@@ -120,6 +112,17 @@ const PartnerSetup = () => {
         ? prev[field].filter(item => item !== value)
         : [...prev[field], value]
     }));
+  };
+
+  const handleKeywordAdd = (e) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      const keyword = e.target.value.trim().replace(',', '');
+      if (keyword && !formData.keywords.includes(keyword)) {
+        handleArrayToggle('keywords', keyword);
+        e.target.value = '';
+      }
+    }
   };
 
   const handleNextStep = () => {
@@ -139,7 +142,7 @@ const PartnerSetup = () => {
     const companyPart = company ? company.toLowerCase().replace(/\s+/g, '-') : '';
     const timestamp = Date.now();
     const randomSuffix = Math.random().toString(36).substring(2, 8);
-
+    
     if (companyPart) {
       return `${baseName}-${companyPart}-${randomSuffix}`;
     }
@@ -169,13 +172,13 @@ const PartnerSetup = () => {
     if (!formData.industry) {
       return 'Industry is required';
     }
+    // SIMPLIFIED: Only require minimum 1 service (was 1) and 1 keyword (was 3)
     if (formData.services.length === 0) {
       return 'At least one service must be selected';
     }
-    if (formData.keywords.length < 3) {
-      return 'At least 3 keywords/specializations are required';
+    if (formData.keywords.length < 1) {
+      return 'At least 1 keyword/specialization is required';
     }
-
     return null;
   };
 
@@ -270,7 +273,7 @@ const PartnerSetup = () => {
       case 2:
         return formData.bio && formData.region && formData.industry;
       case 3:
-        return formData.services.length > 0 && formData.keywords.length >= 3;
+        return formData.services.length > 0 && formData.keywords.length >= 1;
       case 4:
         return true; // Portfolio is optional
       default:
@@ -401,7 +404,6 @@ const PartnerSetup = () => {
                 <SafeIcon icon={FiUser} className="text-fabric-blue text-2xl" />
                 <h3 className="text-2xl font-bold text-gray-900">Basic Information</h3>
               </div>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -416,7 +418,6 @@ const PartnerSetup = () => {
                     required
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Company Name
@@ -429,7 +430,6 @@ const PartnerSetup = () => {
                     placeholder="Your company name"
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Email Address *
@@ -443,7 +443,6 @@ const PartnerSetup = () => {
                     required
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Partner Type *
@@ -460,7 +459,6 @@ const PartnerSetup = () => {
                     ))}
                   </select>
                 </div>
-
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     LinkedIn Profile
@@ -473,7 +471,6 @@ const PartnerSetup = () => {
                     placeholder="https://linkedin.com/in/..."
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Website
@@ -503,7 +500,6 @@ const PartnerSetup = () => {
                 <SafeIcon icon={FiBriefcase} className="text-fabric-blue text-2xl" />
                 <h3 className="text-2xl font-bold text-gray-900">Profile Details</h3>
               </div>
-
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -517,7 +513,6 @@ const PartnerSetup = () => {
                     required
                   />
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -537,7 +532,6 @@ const PartnerSetup = () => {
                       <option value="Middle East & Africa">Middle East & Africa</option>
                     </select>
                   </div>
-
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Primary Industry *
@@ -555,7 +549,6 @@ const PartnerSetup = () => {
                     </select>
                   </div>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -572,7 +565,6 @@ const PartnerSetup = () => {
                       Recommended: 200x200px square image
                     </p>
                   </div>
-
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Banner URL
@@ -593,7 +585,7 @@ const PartnerSetup = () => {
             </motion.div>
           )}
 
-          {/* Step 3: Services & Expertise */}
+          {/* Step 3: Services & Expertise - SIMPLIFIED */}
           {currentStep === 3 && (
             <motion.div
               key="step3"
@@ -606,16 +598,18 @@ const PartnerSetup = () => {
                 <SafeIcon icon={FiGlobe} className="text-fabric-blue text-2xl" />
                 <h3 className="text-2xl font-bold text-gray-900">Services & Expertise</h3>
               </div>
-
               <div className="space-y-8">
                 {/* Services */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-4">
-                    Services Offered * (Select all that apply)
+                    Services Offered * (Select at least one)
                   </label>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {serviceOptions.map((service) => (
-                      <label key={service} className="flex items-center space-x-3 cursor-pointer">
+                      <label
+                        key={service}
+                        className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg"
+                      >
                         <input
                           type="checkbox"
                           checked={formData.services.includes(service)}
@@ -626,34 +620,28 @@ const PartnerSetup = () => {
                       </label>
                     ))}
                   </div>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Selected: {formData.services.length} service{formData.services.length !== 1 ? 's' : ''}
+                  </p>
                 </div>
 
-                {/* Keywords */}
+                {/* Keywords - SIMPLIFIED: Only need 1 */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Keywords/Specializations * (Add at least 3)
+                    Keywords/Specializations * (Add at least 1)
                   </label>
                   <div className="space-y-3">
                     <input
                       type="text"
-                      placeholder="Enter keywords separated by commas (e.g., Power BI, Data Warehouse, Real-time Analytics)"
-                      onKeyPress={(e) => {
-                        if (e.key === 'Enter' || e.key === ',') {
-                          e.preventDefault();
-                          const keyword = e.target.value.trim().replace(',', '');
-                          if (keyword && !formData.keywords.includes(keyword)) {
-                            handleArrayToggle('keywords', keyword);
-                            e.target.value = '';
-                          }
-                        }
-                      }}
+                      placeholder="Type a keyword and press Enter or comma (e.g., Power BI, Data Warehouse, Real-time Analytics)"
+                      onKeyDown={handleKeywordAdd}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fabric-blue focus:border-transparent"
                     />
                     <div className="flex flex-wrap gap-2">
                       {formData.keywords.map((keyword, index) => (
                         <span
                           key={index}
-                          className="bg-fabric-blue text-white px-3 py-1 rounded-full text-sm flex items-center cursor-pointer"
+                          className="bg-fabric-blue text-white px-3 py-1 rounded-full text-sm flex items-center cursor-pointer hover:bg-fabric-dark"
                           onClick={() => handleArrayToggle('keywords', keyword)}
                         >
                           {keyword}
@@ -662,7 +650,7 @@ const PartnerSetup = () => {
                       ))}
                     </div>
                     <p className="text-sm text-gray-500">
-                      Current keywords: {formData.keywords.length} (minimum 3 required)
+                      Current keywords: {formData.keywords.length} (minimum 1 required)
                     </p>
                   </div>
                 </div>
@@ -674,7 +662,10 @@ const PartnerSetup = () => {
                   </label>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                     {languageOptions.map((language) => (
-                      <label key={language} className="flex items-center space-x-3 cursor-pointer">
+                      <label
+                        key={language}
+                        className="flex items-center space-x-3 cursor-pointer p-2 hover:bg-gray-50 rounded-lg"
+                      >
                         <input
                           type="checkbox"
                           checked={formData.languages.includes(language)}
@@ -707,7 +698,6 @@ const PartnerSetup = () => {
                       <option value="Q4 2025">Q4 2025</option>
                     </select>
                   </div>
-
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Pricing Model
@@ -742,7 +732,6 @@ const PartnerSetup = () => {
                 <SafeIcon icon={FiUpload} className="text-fabric-blue text-2xl" />
                 <h3 className="text-2xl font-bold text-gray-900">Portfolio & Case Studies</h3>
               </div>
-
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -755,7 +744,6 @@ const PartnerSetup = () => {
                     placeholder="Describe your notable projects, case studies, and success stories. Include specific outcomes and technologies used..."
                   />
                 </div>
-
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Portfolio Links

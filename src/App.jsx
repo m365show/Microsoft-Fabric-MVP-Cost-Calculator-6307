@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
+
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -15,6 +16,8 @@ import PartnerSetup from './components/PartnerSetup';
 import HowItWorks from './components/HowItWorks';
 import Contact from './components/Contact';
 import AdminDashboard from './components/AdminDashboard';
+import SuperAdminDashboard from './components/SuperAdminDashboard';
+
 import './App.css';
 
 // Main App Layout Component
@@ -200,6 +203,24 @@ const AdminDashboardLayout = () => {
   );
 };
 
+// Super Admin Dashboard Layout Component
+const SuperAdminDashboardLayout = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen"
+    >
+      <SuperAdminDashboard />
+    </motion.div>
+  );
+};
+
 function App() {
   useEffect(() => {
     // Set initial document language
@@ -219,8 +240,8 @@ function App() {
         <Route path="/how-it-works" element={<HowItWorksLayout />} />
         <Route path="/contact" element={<ContactLayout />} />
         <Route path="/admin" element={<AdminDashboardLayout />} />
+        <Route path="/super-admin" element={<SuperAdminDashboardLayout />} />
         <Route path="/" element={<AppLayout />} />
-        
         {/* Fallback route */}
         <Route path="*" element={<AppLayout />} />
       </Routes>
