@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiMenu, FiX, FiCloud, FiBarChart3, FiShare2, FiUsers, FiBriefcase, FiBook, FiPhone } = FiIcons;
+const { FiMenu, FiX, FiCloud, FiBarChart3, FiShare2, FiUsers, FiBriefcase, FiBook, FiPhone, FiSettings } = FiIcons;
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,6 +56,14 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  // Add admin access - double click on logo
+  const handleLogoDoubleClick = () => {
+    const adminPath = prompt('Enter admin path (admin or super-admin):');
+    if (adminPath === 'admin' || adminPath === 'super-admin') {
+      navigate(`/${adminPath}`);
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -100, opacity: 0 }}
@@ -69,6 +77,8 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-3 cursor-pointer"
             onClick={handleLogoClick}
+            onDoubleClick={handleLogoDoubleClick}
+            title="Double-click for admin access"
           >
             <div className="w-8 h-8 bg-gradient-to-r from-fabric-blue to-fabric-purple rounded-lg flex items-center justify-center">
               <SafeIcon icon={FiCloud} className="text-white text-lg" />

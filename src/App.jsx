@@ -185,39 +185,41 @@ const ContactLayout = () => {
   );
 };
 
-// Admin Dashboard Layout Component
+// Admin Dashboard Layout Component (Standalone)
 const AdminDashboardLayout = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen"
-    >
-      <AdminDashboard />
-    </motion.div>
+    <div className="min-h-screen">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <AdminDashboard />
+      </motion.div>
+    </div>
   );
 };
 
-// Super Admin Dashboard Layout Component
+// Super Admin Dashboard Layout Component (Standalone)
 const SuperAdminDashboardLayout = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen"
-    >
-      <SuperAdminDashboard />
-    </motion.div>
+    <div className="min-h-screen">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <SuperAdminDashboard />
+      </motion.div>
+    </div>
   );
 };
 
@@ -231,17 +233,26 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Main routes */}
+        {/* Admin routes - must be before other routes */}
+        <Route path="/admin" element={<AdminDashboardLayout />} />
+        <Route path="/super-admin" element={<SuperAdminDashboardLayout />} />
+        
+        {/* Calculator routes */}
         <Route path="/calc" element={<CalculatorOnlyLayout />} />
         <Route path="/embed" element={<CalculatorEmbedLayout />} />
+        
+        {/* Partner routes */}
         <Route path="/partners" element={<PartnersLayout />} />
         <Route path="/partner/:slug" element={<PartnerProfileLayout />} />
         <Route path="/partner-setup" element={<PartnerSetupLayout />} />
+        
+        {/* Content pages */}
         <Route path="/how-it-works" element={<HowItWorksLayout />} />
         <Route path="/contact" element={<ContactLayout />} />
-        <Route path="/admin" element={<AdminDashboardLayout />} />
-        <Route path="/super-admin" element={<SuperAdminDashboardLayout />} />
+        
+        {/* Home page */}
         <Route path="/" element={<AppLayout />} />
+        
         {/* Fallback route */}
         <Route path="*" element={<AppLayout />} />
       </Routes>
