@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiStar, FiZap, FiTrendingUp, FiDownload, FiFileText, FiTarget, FiMail, FiShare2, FiDollarSign, FiClock, FiUsers, FiSettings } = FiIcons;
+const {
+  FiStar, FiZap, FiTrendingUp, FiDownload, FiFileText, FiTarget,
+  FiMail, FiShare2, FiDollarSign, FiClock, FiUsers, FiSettings
+} = FiIcons;
 
 const Hero = () => {
-  const { t } = useTranslation();
-
   const handleScrollToCalculator = () => {
     document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -44,15 +44,15 @@ const Hero = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight"
           >
             <span className="bg-gradient-to-r from-fabric-blue via-fabric-purple to-fabric-light bg-clip-text text-transparent">
-              {t('hero.title')}
+              Microsoft Fabric
             </span>
             <br />
             <span className="text-gray-800">
-              {t('hero.subtitle')}
+              MVP Cost Calculator
             </span>
             <br />
             <span className="text-2xl md:text-3xl lg:text-4xl text-gray-600 font-medium">
-              {t('hero.description')}
+              & Pitch Deck Generator
             </span>
           </motion.h1>
 
@@ -63,9 +63,11 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed"
           >
-            {t('hero.tagline')} <br />
-            {t('hero.subtagline')} <br />
-            <span className="text-lg text-gray-500">{t('hero.accelerate')}</span>
+            🎯 For Startups, Enterprises & Consultants
+            <br />
+            Calculate costs → Generate professional pitch decks → Send to implementation partners
+            <br />
+            <span className="text-lg text-gray-500">Accelerate your Microsoft Fabric MVP with clarity and speed</span>
           </motion.p>
 
           {/* Key Benefits Grid */}
@@ -77,18 +79,18 @@ const Hero = () => {
           >
             <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50">
               <SafeIcon icon={FiZap} className="text-fabric-blue text-3xl mb-3 mx-auto" />
-              <h3 className="font-bold text-gray-900 mb-2">{t('hero.instantCost')}</h3>
-              <p className="text-gray-600 text-sm">{t('hero.instantCostDesc')}</p>
+              <h3 className="font-bold text-gray-900 mb-2">⚡ Instant Cost Calculation</h3>
+              <p className="text-gray-600 text-sm">Get detailed pricing for infrastructure, licensing, development & support</p>
             </div>
             <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50">
               <SafeIcon icon={FiFileText} className="text-purple-600 text-3xl mb-3 mx-auto" />
-              <h3 className="font-bold text-gray-900 mb-2">{t('hero.autoPdf')}</h3>
-              <p className="text-gray-600 text-sm">{t('hero.autoPdfDesc')}</p>
+              <h3 className="font-bold text-gray-900 mb-2">📄 Auto-Generated PDF Pitch Deck</h3>
+              <p className="text-gray-600 text-sm">Download-ready, investor & partner-friendly documentation</p>
             </div>
             <div className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50">
               <SafeIcon icon={FiMail} className="text-green-600 text-3xl mb-3 mx-auto" />
-              <h3 className="font-bold text-gray-900 mb-2">{t('hero.emailTemplates')}</h3>
-              <p className="text-gray-600 text-sm">{t('hero.emailTemplatesDesc')}</p>
+              <h3 className="font-bold text-gray-900 mb-2">✉️ Prewritten Email Templates</h3>
+              <p className="text-gray-600 text-sm">Ready to send to Microsoft Partners, consultants & stakeholders</p>
             </div>
           </motion.div>
 
@@ -125,7 +127,7 @@ const Hero = () => {
               className="px-8 py-4 bg-gradient-to-r from-fabric-blue to-fabric-dark text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
               <SafeIcon icon={FiZap} className="text-lg" />
-              <span>{t('hero.calculateCosts')}</span>
+              <span>Calculate My MVP Costs</span>
             </motion.button>
             <motion.button
               onClick={handleScrollToCalculator}
@@ -134,7 +136,7 @@ const Hero = () => {
               className="px-8 py-4 bg-white/80 backdrop-blur-sm text-fabric-blue font-semibold rounded-xl border-2 border-fabric-blue/20 hover:border-fabric-blue/40 transition-all duration-300 flex items-center space-x-2"
             >
               <SafeIcon icon={FiDownload} className="text-lg" />
-              <span>{t('hero.generatePitch')}</span>
+              <span>Generate Pitch Deck</span>
             </motion.button>
           </motion.div>
 
@@ -150,10 +152,30 @@ const Hero = () => {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {[
-                { step: '1', title: 'Select Features', desc: 'Choose Microsoft Fabric components & define requirements', icon: FiSettings },
-                { step: '2', title: 'Get Instant Costs', desc: 'View detailed pricing breakdown with infrastructure, development & support', icon: FiDollarSign },
-                { step: '3', title: 'Download Pitch Deck', desc: 'Professional PDF with technical scope, budget & timeline', icon: FiFileText },
-                { step: '4', title: 'Contact Partners', desc: 'Use email templates to reach Microsoft Partners & consultants', icon: FiMail }
+                {
+                  step: '1',
+                  title: 'Select Features',
+                  desc: 'Choose Microsoft Fabric components & define requirements',
+                  icon: FiSettings
+                },
+                {
+                  step: '2',
+                  title: 'Get Instant Costs',
+                  desc: 'View detailed pricing breakdown with infrastructure, development & support',
+                  icon: FiDollarSign
+                },
+                {
+                  step: '3',
+                  title: 'Download Pitch Deck',
+                  desc: 'Professional PDF with technical scope, budget & timeline',
+                  icon: FiFileText
+                },
+                {
+                  step: '4',
+                  title: 'Contact Partners',
+                  desc: 'Use email templates to reach Microsoft Partners & consultants',
+                  icon: FiMail
+                }
               ].map((item, index) => (
                 <div key={index} className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-fabric-blue to-fabric-purple rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-4">

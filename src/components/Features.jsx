@@ -1,43 +1,44 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiDatabase, FiActivity, FiBrain, FiBarChart, FiShield, FiSettings, FiUsers, FiGlobe, FiZap, FiTrendingUp, FiShare2, FiLinkedin, FiFileText, FiMail, FiDollarSign, FiCode, FiCopy } = FiIcons;
+const {
+  FiDatabase, FiActivity, FiBrain, FiBarChart, FiShield, FiSettings,
+  FiUsers, FiGlobe, FiZap, FiTrendingUp, FiShare2, FiLinkedin,
+  FiFileText, FiMail, FiDollarSign, FiCode, FiCopy
+} = FiIcons;
 
 const Features = () => {
-  const { t, i18n } = useTranslation();
-
   const fabricFeatures = [
     {
       icon: FiDatabase,
-      title: t('features.lakehouse') || 'Lakehouse & Data Warehouse',
+      title: 'Lakehouse & Data Warehouse',
       description: 'Calculate costs for unified data storage, Delta Lake format, and SQL/Spark compute engines.'
     },
     {
       icon: FiActivity,
-      title: t('features.realTimeAnalytics') || 'Real-Time Analytics',
+      title: 'Real-Time Analytics',
       description: 'Estimate streaming analytics, event processing, KQL databases, and live dashboards.'
     },
     {
       icon: FiBrain,
-      title: t('features.aiMl') || 'AI & Machine Learning',
+      title: 'AI & Machine Learning',
       description: 'Get pricing for model development, MLOps, cognitive services, and AutoML capabilities.'
     },
     {
       icon: FiBarChart,
-      title: t('features.powerBi') || 'Power BI & Visualization',
+      title: 'Power BI & Visualization',
       description: 'Calculate dashboard licensing, embedded analytics, and self-service reporting costs.'
     },
     {
       icon: FiShield,
-      title: t('features.security') || 'Security & Compliance',
+      title: 'Security & Compliance',
       description: 'Factor in data governance, RBAC, encryption, and industry compliance requirements.'
     },
     {
       icon: FiSettings,
-      title: t('features.customConfig') || 'Custom Configuration',
+      title: 'Custom Configuration',
       description: 'Tailor calculations for industry-specific needs, custom connectors, and workflows.'
     }
   ];
@@ -45,26 +46,26 @@ const Features = () => {
   const benefits = [
     {
       icon: FiZap,
-      title: t('features.instantResults'),
-      description: t('features.instantResultsDesc'),
+      title: 'Instant Professional Results',
+      description: 'Get enterprise-grade cost breakdowns and documentation in minutes, not days.',
       color: 'from-yellow-400 to-orange-500'
     },
     {
       icon: FiFileText,
-      title: t('features.investorReady'),
-      description: t('features.investorReadyDesc'),
+      title: 'Investor-Ready Documentation',
+      description: 'Download professional pitch decks that impress stakeholders and secure funding.',
       color: 'from-blue-400 to-indigo-500'
     },
     {
       icon: FiMail,
-      title: t('features.readyTemplates'),
-      description: t('features.readyTemplatesDesc'),
+      title: 'Ready-to-Send Templates',
+      description: 'Copy-paste email templates for immediate outreach to implementation partners.',
       color: 'from-green-400 to-emerald-500'
     },
     {
       icon: FiTrendingUp,
-      title: t('features.accelerateMVP'),
-      description: t('features.accelerateMVPDesc'),
+      title: 'Accelerate MVP Development',
+      description: 'Skip the planning phase and jump straight to implementation with clear specifications.',
       color: 'from-purple-400 to-pink-500'
     }
   ];
@@ -72,43 +73,41 @@ const Features = () => {
   const targetAudience = [
     {
       icon: FiUsers,
-      title: t('features.productManagers'),
-      description: t('features.productManagersDesc'),
+      title: 'Product Managers & Tech Leads',
+      description: 'Get accurate cost estimates and technical specifications for stakeholder approval.',
       useCases: [
-        t('features.budgetPlanning'),
-        t('features.vendorSelection'),
-        t('features.timelineEstimation'),
-        t('features.stakeholderBuyIn')
+        'Budget planning',
+        'Vendor selection',
+        'Timeline estimation',
+        'Stakeholder buy-in'
       ]
     },
     {
       icon: FiTrendingUp,
-      title: t('features.foundersTeams'),
-      description: t('features.foundersTeamsDesc'),
+      title: 'Founders & Innovation Teams',
+      description: 'Create professional presentations for investors and board members.',
       useCases: [
-        t('features.investorPitches'),
-        t('features.boardPresentations'),
-        t('features.grantApplications'),
-        t('features.strategicPlanning')
+        'Investor pitches',
+        'Board presentations',
+        'Grant applications',
+        'Strategic planning'
       ]
     },
     {
       icon: FiCode,
-      title: t('features.consultantsPartners'),
-      description: t('features.consultantsPartnersDesc'),
+      title: 'Consultants & Solution Partners',
+      description: 'Generate client-ready proposals and accelerate sales cycles.',
       useCases: [
-        t('features.clientProposals'),
-        t('features.salesPresentations'),
-        t('features.projectScoping'),
-        t('features.competitiveBidding')
+        'Client proposals',
+        'Sales presentations',
+        'Project scoping',
+        'Competitive bidding'
       ]
     }
   ];
 
   const getEmbedCode = () => {
-    const currentLang = i18n.language;
-    const langPath = currentLang === 'en' ? '' : `/${currentLang}`;
-    return `<iframe src="https://fabric.m365calc.com/#${langPath}/calc" width="100%" height="1800" style="border: none;border-radius: 8px;" title="Microsoft Fabric MVP Calculator"></iframe>`;
+    return `<iframe src="https://fabric.m365calc.com/#/embed" width="100%" height="1800" style="border: none;border-radius: 8px;" title="Microsoft Fabric MVP Calculator"></iframe>`;
   };
 
   const copyEmbedCode = () => {
@@ -118,8 +117,9 @@ const Features = () => {
     // Show success feedback
     const button = document.getElementById('copy-embed-btn');
     const originalText = button.textContent;
-    button.textContent = t('features.copied');
+    button.textContent = 'Copied!';
     button.style.backgroundColor = '#10b981';
+    
     setTimeout(() => {
       button.textContent = originalText;
       button.style.backgroundColor = '';
@@ -138,10 +138,10 @@ const Features = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            🛠️ {t('features.title')}
+            🛠️ Built for Real Microsoft Fabric MVP Projects
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t('features.subtitle')}
+            Professional cost calculation and pitch deck generation for startups, enterprises, and consultants
           </p>
         </motion.div>
 
@@ -155,13 +155,13 @@ const Features = () => {
             className="text-center mb-12"
           >
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              📊 {t('features.componentsTitle')}
+              📊 Microsoft Fabric Components & Cost Calculation
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              {t('features.componentsSubtitle')}
+              Select the Fabric features you need and get instant, accurate pricing breakdowns
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {fabricFeatures.map((feature, index) => (
               <motion.div
@@ -193,13 +193,13 @@ const Features = () => {
             className="text-center mb-16"
           >
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              🚀 {t('features.whyChooseTitle')}
+              🚀 Why Choose Our Professional Calculator
             </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('features.whyChooseSubtitle')}
+              Everything you need to plan, present, and execute your Microsoft Fabric MVP
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {benefits.map((benefit, index) => (
               <motion.div
@@ -232,13 +232,13 @@ const Features = () => {
             className="text-center mb-16"
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
-              👥 {t('features.professionalNeedsTitle')}
+              👥 Built for Different Professional Needs
             </h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('features.professionalNeedsSubtitle')}
+              Whether you're planning internally, pitching to investors, or proposing to clients
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {targetAudience.map((audience, index) => (
               <motion.div
@@ -255,7 +255,7 @@ const Features = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{audience.title}</h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">{audience.description}</p>
                 <div className="space-y-2">
-                  <h4 className="font-semibold text-gray-900 text-sm">{t('features.perfectFor')}</h4>
+                  <h4 className="font-semibold text-gray-900 text-sm">Perfect for:</h4>
                   <div className="grid grid-cols-2 gap-2">
                     {audience.useCases.map((useCase, i) => (
                       <div key={i} className="flex items-center space-x-1 text-sm text-gray-600">
@@ -280,24 +280,24 @@ const Features = () => {
         >
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              💡 {t('features.embedTitle')}
+              💡 Embed Calculator on Your Website
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              {t('features.embedSubtitle')}
+              Partners and consultants: Add this calculator to your site to help clients plan their Microsoft Fabric projects
             </p>
           </div>
-          
+
           <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex flex-col lg:flex-row items-start space-y-4 lg:space-y-0 lg:space-x-6">
               <div className="flex-1">
-                <h4 className="font-semibold text-gray-900 mb-2">{t('features.embedCodeTitle')}</h4>
+                <h4 className="font-semibold text-gray-900 mb-2">Calculator-Only Embed Code:</h4>
                 <div className="bg-gray-900 text-green-400 p-4 rounded-lg text-sm font-mono overflow-x-auto">
                   <code>
                     {getEmbedCode()}
                   </code>
                 </div>
                 <p className="text-sm text-gray-500 mt-2">
-                  ✅ {t('features.embedNote')}
+                  ✅ Clean calculator interface only (no header/footer) • Perfect for embedding
                 </p>
               </div>
               <div className="flex-shrink-0">
@@ -307,29 +307,29 @@ const Features = () => {
                   className="px-6 py-3 bg-fabric-blue text-white font-semibold rounded-lg hover:bg-fabric-dark transition-colors flex items-center space-x-2"
                 >
                   <SafeIcon icon={FiCopy} />
-                  <span>{t('features.copyCode')}</span>
+                  <span>Copy Code</span>
                 </button>
               </div>
             </div>
-            
+
             <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-              <h5 className="font-semibold text-gray-900 mb-2">{t('features.embedBenefitsTitle')}</h5>
+              <h5 className="font-semibold text-gray-900 mb-2">Benefits of Embedding:</h5>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-700">
                 <div className="flex items-center space-x-2">
                   <div className="w-1.5 h-1.5 bg-fabric-blue rounded-full"></div>
-                  <span>{t('features.helpClientsCalculate')}</span>
+                  <span>Help clients calculate project costs</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-1.5 h-1.5 bg-fabric-blue rounded-full"></div>
-                  <span>{t('features.generateSpecs')}</span>
+                  <span>Generate professional specifications</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-1.5 h-1.5 bg-fabric-blue rounded-full"></div>
-                  <span>{t('features.streamlineProposals')}</span>
+                  <span>Streamline proposal processes</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <div className="w-1.5 h-1.5 bg-fabric-blue rounded-full"></div>
-                  <span>{t('features.attractLeads')}</span>
+                  <span>Attract qualified leads</span>
                 </div>
               </div>
             </div>
@@ -345,10 +345,10 @@ const Features = () => {
           className="bg-gradient-to-r from-fabric-blue/5 via-fabric-purple/5 to-fabric-light/5 rounded-3xl p-8 md:p-12 text-center"
         >
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-            🎯 {t('features.readyToCalculateTitle')}
+            🎯 Ready to Calculate Your Microsoft Fabric MVP?
           </h3>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            {t('features.readyToCalculateSubtitle')}
+            Join thousands of professionals who've used our calculator to plan, present, and execute successful Microsoft Fabric projects
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <motion.button
@@ -358,11 +358,11 @@ const Features = () => {
               className="px-8 py-4 bg-gradient-to-r from-fabric-blue to-fabric-purple text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
               <SafeIcon icon={FiZap} className="text-lg" />
-              <span>{t('features.startCalculator')}</span>
+              <span>Start My MVP Calculator</span>
             </motion.button>
             <div className="flex items-center space-x-2 text-gray-500">
               <SafeIcon icon={FiUsers} className="text-sm" />
-              <span className="text-sm">{t('features.usedByProfessionals')}</span>
+              <span className="text-sm">Used by 1000+ professionals</span>
             </div>
           </div>
         </motion.div>

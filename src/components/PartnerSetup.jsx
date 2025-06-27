@@ -20,31 +20,30 @@ const PartnerSetup = () => {
     linkedin: '',
     website: '',
     partnerType: '',
-    
+
     // Step 2: Profile Details
     bio: '',
     region: '',
     industry: '',
     logoUrl: '',
     bannerUrl: '',
-    
+
     // Step 3: Services & Expertise
     services: [],
     keywords: [],
-    languages: [],
+    languages: ['English'], // Default to English
     availability: '',
     pricingModel: '',
-    
+
     // Step 4: Portfolio
     caseStudies: '',
     portfolioLinks: '',
-    
-    // Step 5: Plan Selection
-    planType: 'basic', // 'basic' or 'premium'
-    selectedLanguages: ['English']
+
+    // No more plan selection - all partners are now free/basic tier
+    planType: 'basic'
   });
 
-  const totalSteps = 5;
+  const totalSteps = 4; // Reduced from 5 steps
 
   const partnerTypes = [
     'Freelancer',
@@ -107,6 +106,7 @@ const PartnerSetup = () => {
       ...prev,
       [field]: value
     }));
+
     // Clear any previous errors when user starts typing
     if (submitError) {
       setSubmitError('');
@@ -134,19 +134,12 @@ const PartnerSetup = () => {
     }
   };
 
-  const calculatePremiumPrice = () => {
-    const basePrice = 500;
-    const additionalLanguages = formData.selectedLanguages.length - 1; // First language free
-    const languagePrice = additionalLanguages * 250;
-    return basePrice + languagePrice;
-  };
-
   const generateUniqueSlug = (name, company) => {
     const baseName = name.toLowerCase().replace(/\s+/g, '-');
     const companyPart = company ? company.toLowerCase().replace(/\s+/g, '-') : '';
     const timestamp = Date.now();
     const randomSuffix = Math.random().toString(36).substring(2, 8);
-    
+
     if (companyPart) {
       return `${baseName}-${companyPart}-${randomSuffix}`;
     }
@@ -182,7 +175,7 @@ const PartnerSetup = () => {
     if (formData.keywords.length < 3) {
       return 'At least 3 keywords/specializations are required';
     }
-    
+
     return null;
   };
 
@@ -202,7 +195,7 @@ const PartnerSetup = () => {
       // Generate unique slug
       const slug = generateUniqueSlug(formData.name, formData.company);
 
-      // Prepare data for Supabase
+      // Prepare data for Supabase - ALL PARTNERS ARE NOW FREE/BASIC
       const partnerData = {
         name: formData.name.trim(),
         company: formData.company.trim() || null,
@@ -217,13 +210,13 @@ const PartnerSetup = () => {
         banner_url: formData.bannerUrl.trim() || null,
         services: formData.services,
         keywords: formData.keywords,
-        languages: formData.planType === 'premium' ? formData.selectedLanguages : ['English'],
+        languages: formData.languages,
         availability: formData.availability || null,
         pricing_model: formData.pricingModel || null,
         case_studies: formData.caseStudies.trim() || null,
         portfolio_links: formData.portfolioLinks.trim() || null,
-        premium_tier: formData.planType === 'premium' ? 1 : 0,
-        premium_price: formData.planType === 'premium' ? calculatePremiumPrice() : 0,
+        premium_tier: 0, // All partners are now basic/free
+        premium_price: 0, // No premium pricing
         slug: slug,
         approved: false, // Requires admin approval
         contact_email: formData.email.trim().toLowerCase(),
@@ -231,20 +224,6 @@ const PartnerSetup = () => {
       };
 
       console.log('Submitting partner data:', partnerData);
-
-      // Check if table exists and create if needed
-      const { data: tableCheck, error: tableError } = await supabase
-        .from('partners_fabric_2025')
-        .select('id')
-        .limit(1);
-
-      if (tableError && tableError.code === '42P01') {
-        // Table doesn't exist, create it
-        console.log('Table does not exist, attempting to create...');
-        setSubmitError('Database table not found. Please contact support to set up the partner directory.');
-        setIsSubmitting(false);
-        return;
-      }
 
       // Insert the partner data
       const { data, error } = await supabase
@@ -254,7 +233,6 @@ const PartnerSetup = () => {
 
       if (error) {
         console.error('Supabase error:', error);
-        
         // Handle specific error types
         if (error.code === '23505') {
           setSubmitError('A partner with this email already exists. Please use a different email address.');
@@ -295,8 +273,6 @@ const PartnerSetup = () => {
         return formData.services.length > 0 && formData.keywords.length >= 3;
       case 4:
         return true; // Portfolio is optional
-      case 5:
-        return formData.planType;
       default:
         return true;
     }
@@ -359,7 +335,7 @@ const PartnerSetup = () => {
             💼 Become a Microsoft Fabric Partner
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join our directory and connect with businesses looking for Microsoft Fabric expertise. Get matched with qualified leads and grow your consulting business.
+            Join our directory and connect with businesses looking for Microsoft Fabric expertise. Get matched with qualified leads and grow your consulting business - completely free!
           </p>
         </motion.div>
 
@@ -791,174 +767,50 @@ const PartnerSetup = () => {
                     placeholder="Add links to your portfolio, case studies, or project examples (one per line)..."
                   />
                 </div>
-              </div>
-            </motion.div>
-          )}
 
-          {/* Step 5: Plan Selection */}
-          {currentStep === 5 && (
-            <motion.div
-              key="step5"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="flex items-center space-x-3 mb-6">
-                <SafeIcon icon={FiStar} className="text-fabric-blue text-2xl" />
-                <h3 className="text-2xl font-bold text-gray-900">Choose Your Plan</h3>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Basic Plan */}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className={`p-6 border-2 rounded-2xl cursor-pointer transition-all duration-300 ${
-                    formData.planType === 'basic'
-                      ? 'border-fabric-blue bg-fabric-blue/5'
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                  onClick={() => handleInputChange('planType', 'basic')}
-                >
-                  <div className="text-center mb-6">
-                    <h4 className="text-2xl font-bold text-gray-900 mb-2">Basic Partner</h4>
-                    <div className="text-4xl font-bold text-fabric-blue mb-2">FREE</div>
-                    <p className="text-gray-600">Perfect for getting started</p>
+                {/* Free Partner Information */}
+                <div className="mt-8 p-6 bg-green-50 border border-green-200 rounded-xl">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <SafeIcon icon={FiCheck} className="text-green-600 text-2xl" />
+                    <h4 className="text-xl font-bold text-gray-900">Free Partner Benefits</h4>
                   </div>
-
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-center space-x-3">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                    <div className="flex items-center space-x-2">
                       <SafeIcon icon={FiCheck} className="text-green-500" />
                       <span>Public profile page</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiCheck} className="text-green-500" />
-                      <span>Logo and basic info</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiCheck} className="text-green-500" />
-                      <span>Up to 3 services</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiCheck} className="text-green-500" />
-                      <span>English language support</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiCheck} className="text-green-500" />
-                      <span>Basic keyword matching</span>
-                    </li>
-                  </ul>
-
-                  {formData.planType === 'basic' && (
-                    <div className="bg-fabric-blue text-white p-3 rounded-lg text-center font-semibold">
-                      Selected Plan
                     </div>
-                  )}
-                </motion.div>
-
-                {/* Premium Plan */}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className={`p-6 border-2 rounded-2xl cursor-pointer transition-all duration-300 relative ${
-                    formData.planType === 'premium'
-                      ? 'border-fabric-purple bg-gradient-to-br from-fabric-blue/10 to-fabric-purple/10'
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                  onClick={() => handleInputChange('planType', 'premium')}
-                >
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-fabric-blue to-fabric-purple text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center">
-                      <SafeIcon icon={FiAward} className="mr-1" />
-                      Most Popular
-                    </span>
-                  </div>
-
-                  <div className="text-center mb-6 mt-4">
-                    <h4 className="text-2xl font-bold text-gray-900 mb-2">Premium Partner</h4>
-                    <div className="text-4xl font-bold bg-gradient-to-r from-fabric-blue to-fabric-purple bg-clip-text text-transparent mb-2">
-                      ${calculatePremiumPrice()}
-                    </div>
-                    <p className="text-gray-600">Annual subscription</p>
-                  </div>
-
-                  <ul className="space-y-3 mb-6">
-                    <li className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2">
                       <SafeIcon icon={FiCheck} className="text-green-500" />
-                      <span>Everything in Basic</span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiStar} className="text-fabric-blue" />
-                      <span><strong>Featured ranking</strong></span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiStar} className="text-fabric-blue" />
-                      <span><strong>Verified badge</strong></span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiStar} className="text-fabric-blue" />
-                      <span><strong>Unlimited services</strong></span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiStar} className="text-fabric-blue" />
-                      <span><strong>Multi-language support</strong></span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiStar} className="text-fabric-blue" />
-                      <span><strong>Advanced keyword matching</strong></span>
-                    </li>
-                    <li className="flex items-center space-x-3">
-                      <SafeIcon icon={FiStar} className="text-fabric-blue" />
-                      <span><strong>Lead routing priority</strong></span>
-                    </li>
-                  </ul>
+                      <span>Logo and company information</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <SafeIcon icon={FiCheck} className="text-green-500" />
+                      <span>Unlimited services listing</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <SafeIcon icon={FiCheck} className="text-green-500" />
+                      <span>Multi-language support</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <SafeIcon icon={FiCheck} className="text-green-500" />
+                      <span>Portfolio and case studies</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <SafeIcon icon={FiCheck} className="text-green-500" />
+                      <span>Lead generation opportunities</span>
+                    </div>
+                  </div>
+                </div>
 
-                  {formData.planType === 'premium' && (
-                    <>
-                      {/* Language Selection */}
-                      <div className="mb-6">
-                        <h5 className="font-semibold text-gray-900 mb-3">
-                          Select Languages ($250 each additional)
-                        </h5>
-                        <div className="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto">
-                          {languageOptions.map((language) => (
-                            <label key={language} className="flex items-center space-x-2 cursor-pointer text-sm">
-                              <input
-                                type="checkbox"
-                                checked={formData.selectedLanguages.includes(language)}
-                                onChange={() => {
-                                  if (language === 'English') return; // English always included
-                                  handleArrayToggle('selectedLanguages', language);
-                                }}
-                                disabled={language === 'English'}
-                                className="rounded border-gray-300 text-fabric-blue focus:ring-fabric-blue"
-                              />
-                              <span className="text-gray-700">{language}</span>
-                              {language === 'English' && <span className="text-green-600 text-xs">(Included)</span>}
-                            </label>
-                          ))}
-                        </div>
-                        <div className="mt-3 text-sm text-gray-600">
-                          Base: $500 + {formData.selectedLanguages.length - 1} additional languages × $250 = ${calculatePremiumPrice()}
-                        </div>
-                      </div>
-
-                      <div className="bg-gradient-to-r from-fabric-blue to-fabric-purple text-white p-3 rounded-lg text-center font-semibold">
-                        Selected Plan - ${calculatePremiumPrice()}/year
-                      </div>
-                    </>
-                  )}
-                </motion.div>
-              </div>
-
-              <div className="mt-8 p-4 bg-blue-50 rounded-lg">
-                <h5 className="font-semibold text-gray-900 mb-2">What happens next?</h5>
-                <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
-                  <li>Your profile will be submitted for review</li>
-                  <li>We'll approve your profile within 24 hours</li>
-                  <li>Premium partners will receive payment instructions</li>
-                  <li>Your profile goes live in the directory</li>
-                  <li>Start receiving qualified leads!</li>
-                </ol>
+                <div className="mt-8 p-4 bg-blue-50 rounded-lg">
+                  <h5 className="font-semibold text-gray-900 mb-2">What happens next?</h5>
+                  <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700">
+                    <li>Your profile will be submitted for review</li>
+                    <li>We'll approve your profile within 24 hours</li>
+                    <li>Your profile goes live in the directory</li>
+                    <li>Start receiving qualified leads!</li>
+                  </ol>
+                </div>
               </div>
             </motion.div>
           )}

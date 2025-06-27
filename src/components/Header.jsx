@@ -1,72 +1,41 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
-import LanguageSelector from './LanguageSelector';
 
 const { FiMenu, FiX, FiCloud, FiBarChart3, FiShare2, FiUsers, FiBriefcase, FiBook, FiPhone } = FiIcons;
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const getCurrentLanguageFromPath = () => {
-    const path = location.pathname;
-    const pathSegments = path.split('/').filter(Boolean);
-    if (pathSegments.length > 0) {
-      const firstSegment = pathSegments[0];
-      // Check if first segment is a valid language code
-      const supportedLangCodes = ['de', 'fr', 'es', 'it', 'pt', 'nl', 'pl', 'ru', 'zh', 'ja', 'ko', 'ar', 'hi', 'sv'];
-      if (supportedLangCodes.includes(firstSegment)) {
-        return firstSegment;
-      }
-    }
-    return 'en';
-  };
-
-  const getLocalizedPath = (path) => {
-    const currentLang = getCurrentLanguageFromPath();
-    if (currentLang === 'en') {
-      return path;
-    }
-    return `/${currentLang}${path}`;
-  };
-
   const handleNavigation = (path) => {
-    const localizedPath = getLocalizedPath(path);
-    navigate(localizedPath);
+    navigate(path);
     setIsMenuOpen(false);
-    // Don't scroll here, let the component handle it
   };
 
   const navItems = [
-    { name: t('nav.calculator') || 'Calculator', path: '#calculator', icon: FiBarChart3 },
-    { name: t('nav.features') || 'Features', path: '#features', icon: FiCloud },
+    { name: 'Calculator', path: '#calculator', icon: FiBarChart3 },
+    { name: 'Features', path: '#features', icon: FiCloud },
     { name: 'Partners', path: '/partners', icon: FiUsers },
     { name: 'How It Works', path: '/how-it-works', icon: FiBook },
     { name: 'Contact', path: '/contact', icon: FiPhone },
-    { name: t('nav.share') || 'Share', path: '#share', icon: FiShare2 }
+    { name: 'Share', path: '#share', icon: FiShare2 }
   ];
 
   const handleLogoClick = () => {
-    const homePath = getLocalizedPath('/');
-    navigate(homePath);
+    navigate('/');
   };
 
   const handleNavClick = (item) => {
     if (item.path.startsWith('#')) {
       // Handle anchor links
-      const currentLang = getCurrentLanguageFromPath();
-      const isOnHomePage = location.pathname === '/' || location.pathname === `/${currentLang}` || location.pathname === `/${currentLang}/`;
-      
+      const isOnHomePage = location.pathname === '/';
       if (!isOnHomePage) {
         // If not on home page, navigate to home first
-        const homePath = getLocalizedPath('/');
-        navigate(homePath);
+        navigate('/');
         setTimeout(() => {
           const element = document.querySelector(item.path);
           if (element) {
@@ -122,12 +91,10 @@ const Header = () => {
                 <span className="font-medium">{item.name}</span>
               </motion.button>
             ))}
-            <LanguageSelector />
           </nav>
 
-          {/* Mobile Menu Button & Language Selector */}
-          <div className="md:hidden flex items-center space-x-3">
-            <LanguageSelector />
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg hover:bg-gray-100 transition-colors"

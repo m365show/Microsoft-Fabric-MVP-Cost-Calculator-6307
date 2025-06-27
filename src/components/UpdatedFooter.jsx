@@ -1,78 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiCloud, FiMail, FiLinkedin, FiTwitter, FiHeart, FiArrowUp, FiExternalLink, FiHome, FiBook, FiUsers, FiBriefcase, FiFileText, FiPhone } = FiIcons;
+const {
+  FiCloud, FiMail, FiLinkedin, FiTwitter, FiHeart, FiArrowUp,
+  FiExternalLink, FiHome, FiBook, FiUsers, FiBriefcase,
+  FiFileText, FiPhone
+} = FiIcons;
 
 const UpdatedFooter = () => {
-  const { i18n } = useTranslation();
   const navigate = useNavigate();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const getLocalizedPath = (path) => {
-    const currentLang = i18n.language;
-    if (currentLang === 'en') {
-      return path;
-    }
-    return `/${currentLang}${path}`;
-  };
-
   const handleNavigation = (path) => {
-    const localizedPath = getLocalizedPath(path);
-    navigate(localizedPath);
+    navigate(path);
   };
 
   const currentYear = new Date().getFullYear();
 
   const footerLinks = [
-    { 
-      label: '🌐 Home', 
-      path: '/',
-      icon: FiHome,
-      internal: true
-    },
-    { 
-      label: '📘 How It Works', 
-      path: '/how-it-works',
-      icon: FiBook,
-      internal: true
-    },
-    { 
-      label: '🧩 Find a Partner', 
-      path: '/partners',
-      icon: FiUsers,
-      internal: true
-    },
-    { 
-      label: '💼 Become a Partner', 
-      path: '/partner-setup',
-      icon: FiBriefcase,
-      internal: true
-    },
-    { 
-      label: '📄 Sample Pitch Deck', 
-      url: 'https://fabric.m365calc.com/sample-pitchdeck.pdf',
-      icon: FiFileText,
-      internal: false
-    },
-    { 
-      label: '📞 Contact / Support', 
-      path: '/contact',
-      icon: FiPhone,
-      internal: true
-    },
-    { 
-      label: '🔗 LinkedIn Page', 
-      url: 'https://www.linkedin.com/school/m365-show/',
-      icon: FiLinkedin,
-      internal: false
-    }
+    { label: '🌐 Home', path: '/', icon: FiHome, internal: true },
+    { label: '📘 How It Works', path: '/how-it-works', icon: FiBook, internal: true },
+    { label: '🧩 Find a Partner', path: '/partners', icon: FiUsers, internal: true },
+    { label: '💼 Become a Partner', path: '/partner-setup', icon: FiBriefcase, internal: true },
+    { label: '📄 Sample Pitch Deck', url: 'https://fabric.m365calc.com/sample-pitchdeck.pdf', icon: FiFileText, internal: false },
+    { label: '📞 Contact / Support', path: '/contact', icon: FiPhone, internal: true },
+    { label: '🔗 LinkedIn Page', url: 'https://www.linkedin.com/school/m365-show/', icon: FiLinkedin, internal: false }
   ];
 
   const handleLinkClick = (link) => {
@@ -104,12 +62,11 @@ const UpdatedFooter = () => {
                 Microsoft Fabric MVP Calculator
               </span>
             </motion.div>
-            
+
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
-              Professional cost calculation and pitch deck generation for Microsoft Fabric MVP projects. 
-              Designed for startups, enterprises, and consultants who need accurate planning and professional documentation.
+              Professional cost calculation and pitch deck generation for Microsoft Fabric MVP projects. Designed for startups, enterprises, and consultants who need accurate planning and professional documentation.
             </p>
-            
+
             <div className="mb-6">
               <h4 className="font-semibold text-white mb-3">🌐 Live Calculator</h4>
               <a
@@ -122,7 +79,7 @@ const UpdatedFooter = () => {
                 <SafeIcon icon={FiExternalLink} className="text-sm" />
               </a>
             </div>
-            
+
             <div className="flex space-x-4">
               <motion.a
                 href="https://www.linkedin.com/school/m365-show/"
@@ -186,7 +143,7 @@ const UpdatedFooter = () => {
                 </li>
               ))}
             </ul>
-            
+
             <div className="mt-6">
               <h4 className="font-semibold text-white mb-3">📋 Embed Code</h4>
               <div className="bg-gray-800 p-3 rounded-lg text-xs">
@@ -207,7 +164,7 @@ const UpdatedFooter = () => {
           <div className="flex flex-wrap gap-2 mb-6">
             {[
               'Microsoft Fabric MVP Pricing',
-              'Cost Calculator Microsoft Fabric', 
+              'Cost Calculator Microsoft Fabric',
               'MVP Pitch Deck Generator',
               'Microsoft Fabric Implementation Costs',
               'Data Analytics Cost Estimation',
@@ -270,7 +227,7 @@ const UpdatedFooter = () => {
               </a>
             </div>
           </div>
-          
+
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1, y: -2 }}

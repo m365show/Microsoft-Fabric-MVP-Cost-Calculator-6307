@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import supabase from '../lib/supabase';
 
-const { FiSearch, FiFilter, FiStar, FiCheck, FiGlobe, FiMapPin, FiUsers, FiBriefcase, FiAward, FiTrendingUp, FiMail, FiExternalLink, FiChevronRight } = FiIcons;
+const {
+  FiSearch, FiFilter, FiStar, FiCheck, FiGlobe, FiMapPin, FiUsers,
+  FiBriefcase, FiAward, FiTrendingUp, FiMail, FiExternalLink, FiChevronRight
+} = FiIcons;
 
 const PartnerDirectory = () => {
-  const { t } = useTranslation();
   const [partners, setPartners] = useState([]);
   const [filteredPartners, setFilteredPartners] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -206,15 +207,15 @@ const PartnerDirectory = () => {
 
   const PartnerCard = ({ partner }) => {
     const matchScore = calculateMatchScore(partner);
-    
+
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 hover:shadow-xl hover:scale-105 ${
-          partner.premium_tier > 0 
-            ? 'border-gradient-to-r from-fabric-blue to-fabric-purple bg-gradient-to-r from-blue-50 to-purple-50' 
+          partner.premium_tier > 0
+            ? 'border-gradient-to-r from-fabric-blue to-fabric-purple bg-gradient-to-r from-blue-50 to-purple-50'
             : 'border-gray-200'
         }`}
       >
@@ -237,8 +238,8 @@ const PartnerDirectory = () => {
         {/* Partner Header */}
         <div className="flex items-start space-x-4 mb-4">
           {partner.logo_url ? (
-            <img 
-              src={partner.logo_url} 
+            <img
+              src={partner.logo_url}
               alt={`${partner.name} logo`}
               className="w-16 h-16 rounded-lg object-cover border border-gray-200"
             />
@@ -249,7 +250,6 @@ const PartnerDirectory = () => {
               </span>
             </div>
           )}
-          
           <div className="flex-1">
             <h3 className="text-xl font-bold text-gray-900">{partner.name}</h3>
             {partner.company && (
@@ -278,7 +278,7 @@ const PartnerDirectory = () => {
           <h4 className="font-semibold text-gray-900 mb-2">Services</h4>
           <div className="flex flex-wrap gap-2">
             {partner.services?.slice(0, 4).map((service, index) => (
-              <span 
+              <span
                 key={index}
                 className="px-2 py-1 bg-blue-100 text-blue-800 rounded-md text-xs font-medium"
               >
@@ -302,7 +302,7 @@ const PartnerDirectory = () => {
             </h4>
             <div className="flex flex-wrap gap-2">
               {partner.languages.slice(0, 3).map((language, index) => (
-                <span 
+                <span
                   key={index}
                   className="px-2 py-1 bg-gray-100 text-gray-700 rounded-md text-xs"
                 >
@@ -339,7 +339,7 @@ const PartnerDirectory = () => {
             View Profile
             <SafeIcon icon={FiChevronRight} className="ml-1" />
           </motion.button>
-          
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -365,7 +365,6 @@ const PartnerDirectory = () => {
         company: partner.company
       });
       localStorage.setItem('selectedPartners', JSON.stringify(selectedPartners));
-      
       // Show success feedback
       alert(`${partner.name} added to your pitch deck routing!`);
     } else {
@@ -398,10 +397,9 @@ const PartnerDirectory = () => {
             🧩 Microsoft Fabric Partner Directory
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Connect with verified implementation partners, freelancers, and consultants 
-            specialized in Microsoft Fabric MVP development
+            Connect with verified implementation partners, freelancers, and consultants specialized in Microsoft Fabric MVP development
           </p>
-          
+
           <div className="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <div className="flex items-center space-x-2 text-gray-600">
               <SafeIcon icon={FiUsers} className="text-fabric-blue" />
