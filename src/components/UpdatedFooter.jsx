@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiCloud, FiMail, FiLinkedin, FiHeart, FiArrowUp, FiExternalLink, FiHome, FiBook, FiUsers, FiBriefcase, FiPhone } = FiIcons;
+const { FiCloud, FiMail, FiLinkedin, FiHeart, FiArrowUp, FiExternalLink, FiHome, FiBook, FiPhone } = FiIcons;
 
 const UpdatedFooter = () => {
   const navigate = useNavigate();
@@ -22,8 +22,6 @@ const UpdatedFooter = () => {
   const footerLinks = [
     { label: 'Home', path: '/', icon: FiHome, internal: true },
     { label: 'How It Works', path: '/how-it-works', icon: FiBook, internal: true },
-    { label: 'Find a Partner', path: '/partners', icon: FiUsers, internal: true },
-    { label: 'Become a Partner', path: '/partner-setup', icon: FiBriefcase, internal: true },
     { label: 'Contact / Support', path: '/contact', icon: FiPhone, internal: true },
     { label: 'LinkedIn Page', url: 'https://www.linkedin.com/school/m365-show/', icon: FiLinkedin, internal: false }
   ];
@@ -57,10 +55,12 @@ const UpdatedFooter = () => {
                 Microsoft Fabric MVP Calculator
               </span>
             </motion.div>
+
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
               Professional cost calculation and pitch deck generation for Microsoft Fabric MVP projects. 
               Designed for startups, enterprises, and consultants who need accurate planning and professional documentation.
             </p>
+
             <div className="mb-6">
               <h4 className="font-semibold text-white mb-3">🌐 Live Calculator</h4>
               <a
@@ -73,6 +73,7 @@ const UpdatedFooter = () => {
                 <SafeIcon icon={FiExternalLink} className="text-sm" />
               </a>
             </div>
+
             <div className="flex space-x-4">
               <motion.a
                 href="https://www.linkedin.com/school/m365-show/"
@@ -83,6 +84,7 @@ const UpdatedFooter = () => {
               >
                 <SafeIcon icon={FiLinkedin} className="text-lg" />
               </motion.a>
+
               <motion.a
                 href="https://www.linkedin.com/in/m365-summit/"
                 target="_blank"
@@ -99,7 +101,7 @@ const UpdatedFooter = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-3">
-              {footerLinks.slice(0, 4).map((link) => (
+              {footerLinks.slice(0, 3).map((link) => (
                 <li key={link.label}>
                   <button
                     onClick={() => handleLinkClick(link)}
@@ -116,7 +118,7 @@ const UpdatedFooter = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-3">
-              {footerLinks.slice(4).map((link) => (
+              {footerLinks.slice(3).map((link) => (
                 <li key={link.label}>
                   <button
                     onClick={() => handleLinkClick(link)}
@@ -144,7 +146,7 @@ const UpdatedFooter = () => {
 
         {/* SEO Keywords Section */}
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <h4 className="text-sm font-semibold text-gray-300 mb-4">SEO Keywords & Topics:</h4>
+          <h4 className="text-sm font-semibold text-gray-300 mb-4">🔍 SEO Keywords & Topics:</h4>
           <div className="flex flex-wrap gap-2 mb-6">
             {[
               'Microsoft Fabric MVP Pricing',
@@ -169,7 +171,7 @@ const UpdatedFooter = () => {
 
         {/* How to Get Started Section */}
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <h4 className="text-lg font-semibold text-white mb-4">How to Get Started</h4>
+          <h4 className="text-lg font-semibold text-white mb-4">🚀 How to Get Started</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
             <div>
               <h5 className="font-semibold text-gray-300 mb-2">1. Define Your MVP</h5>
@@ -180,8 +182,8 @@ const UpdatedFooter = () => {
               <p className="text-gray-400">Select features, get costs, and generate professional documentation</p>
             </div>
             <div>
-              <h5 className="font-semibold text-gray-300 mb-2">3. Find Partners</h5>
-              <p className="text-gray-400">Use email templates to contact Microsoft Partners and consultants</p>
+              <h5 className="font-semibold text-gray-300 mb-2">3. Download Results</h5>
+              <p className="text-gray-400">Get professional pitch deck and cost analysis</p>
             </div>
             <div>
               <h5 className="font-semibold text-gray-300 mb-2">4. Start Building</h5>
@@ -200,6 +202,7 @@ const UpdatedFooter = () => {
               <span>for the Microsoft community</span>
             </div>
           </div>
+
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1, y: -2 }}

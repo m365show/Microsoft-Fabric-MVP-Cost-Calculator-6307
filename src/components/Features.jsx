@@ -5,8 +5,8 @@ import SafeIcon from '../common/SafeIcon';
 
 const {
   FiDatabase, FiActivity, FiBrain, FiBarChart, FiShield, FiSettings,
-  FiUsers, FiGlobe, FiZap, FiTrendingUp, FiShare2, FiLinkedin,
-  FiFileText, FiMail, FiDollarSign, FiCode, FiCopy
+  FiUsers, FiGlobe, FiZap, FiTrendingUp, FiShare2, FiLinkedin, FiFileText,
+  FiMail, FiDollarSign, FiCode, FiCopy
 } = FiIcons;
 
 const Features = () => {
@@ -59,7 +59,7 @@ const Features = () => {
     {
       icon: FiMail,
       title: 'Ready-to-Send Templates',
-      description: 'Copy-paste email templates for immediate outreach to implementation partners.',
+      description: 'Copy-paste email templates for immediate outreach to Microsoft consultants.',
       color: 'from-green-400 to-emerald-500'
     },
     {
@@ -95,7 +95,7 @@ const Features = () => {
     },
     {
       icon: FiCode,
-      title: 'Consultants & Solution Partners',
+      title: 'Consultants & Solution Providers',
       description: 'Generate client-ready proposals and accelerate sales cycles.',
       useCases: [
         'Client proposals',
@@ -119,7 +119,6 @@ const Features = () => {
     const originalText = button.textContent;
     button.textContent = 'Copied!';
     button.style.backgroundColor = '#10b981';
-    
     setTimeout(() => {
       button.textContent = originalText;
       button.style.backgroundColor = '';
@@ -283,7 +282,7 @@ const Features = () => {
               💡 Embed Calculator on Your Website
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Partners and consultants: Add this calculator to your site to help clients plan their Microsoft Fabric projects
+              Consultants and solution providers: Add this calculator to your site to help clients plan their Microsoft Fabric projects
             </p>
           </div>
 

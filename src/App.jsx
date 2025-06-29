@@ -10,13 +10,8 @@ import SocialShare from './components/SocialShare';
 import UpdatedFooter from './components/UpdatedFooter';
 import CalculatorOnly from './components/CalculatorOnly';
 import CalculatorEmbed from './components/CalculatorEmbed';
-import PartnerDirectory from './components/PartnerDirectory';
-import PartnerProfile from './components/PartnerProfile';
-import PartnerSetup from './components/PartnerSetup';
 import HowItWorks from './components/HowItWorks';
 import Contact from './components/Contact';
-import AdminDashboard from './components/AdminDashboard';
-import SuperAdminDashboard from './components/SuperAdminDashboard';
 
 import './App.css';
 
@@ -80,69 +75,6 @@ const CalculatorEmbedLayout = () => {
   );
 };
 
-// Partners Layout Component
-const PartnersLayout = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 font-inter">
-      <Header />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <PartnerDirectory />
-      </motion.div>
-      <UpdatedFooter />
-    </div>
-  );
-};
-
-// Partner Profile Layout Component
-const PartnerProfileLayout = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 font-inter">
-      <Header />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <PartnerProfile />
-      </motion.div>
-      <UpdatedFooter />
-    </div>
-  );
-};
-
-// Partner Setup Layout Component
-const PartnerSetupLayout = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 font-inter">
-      <Header />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <PartnerSetup />
-      </motion.div>
-      <UpdatedFooter />
-    </div>
-  );
-};
-
 // How It Works Layout Component
 const HowItWorksLayout = () => {
   useEffect(() => {
@@ -185,44 +117,6 @@ const ContactLayout = () => {
   );
 };
 
-// Admin Dashboard Layout Component (Standalone)
-const AdminDashboardLayout = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
-
-  return (
-    <div className="min-h-screen">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <AdminDashboard />
-      </motion.div>
-    </div>
-  );
-};
-
-// Super Admin Dashboard Layout Component (Standalone)
-const SuperAdminDashboardLayout = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
-
-  return (
-    <div className="min-h-screen">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <SuperAdminDashboard />
-      </motion.div>
-    </div>
-  );
-};
-
 function App() {
   useEffect(() => {
     // Set initial document language
@@ -233,18 +127,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Admin routes - must be before other routes */}
-        <Route path="/admin" element={<AdminDashboardLayout />} />
-        <Route path="/super-admin" element={<SuperAdminDashboardLayout />} />
-        
         {/* Calculator routes */}
         <Route path="/calc" element={<CalculatorOnlyLayout />} />
         <Route path="/embed" element={<CalculatorEmbedLayout />} />
-        
-        {/* Partner routes */}
-        <Route path="/partners" element={<PartnersLayout />} />
-        <Route path="/partner/:slug" element={<PartnerProfileLayout />} />
-        <Route path="/partner-setup" element={<PartnerSetupLayout />} />
         
         {/* Content pages */}
         <Route path="/how-it-works" element={<HowItWorksLayout />} />

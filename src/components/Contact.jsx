@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
-import supabase from '../lib/supabase';
 
 const { FiMail, FiLinkedin, FiMessageSquare, FiSend, FiCheck, FiHelpCircle, FiUsers, FiBriefcase } = FiIcons;
 
@@ -20,9 +19,9 @@ const Contact = () => {
 
   const inquiryTypes = [
     { value: 'general', label: 'General Inquiry', icon: FiHelpCircle },
-    { value: 'partner', label: 'Partner Questions', icon: FiUsers },
+    { value: 'technical', label: 'Technical Support', icon: FiMessageSquare },
     { value: 'business', label: 'Business Partnership', icon: FiBriefcase },
-    { value: 'technical', label: 'Technical Support', icon: FiMessageSquare }
+    { value: 'feedback', label: 'Feedback & Suggestions', icon: FiUsers }
   ];
 
   const handleInputChange = (field, value) => {
@@ -36,31 +35,11 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const { data, error } = await supabase
-        .from('contact_inquiries_2025')
-        .insert([{
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          subject: formData.subject,
-          message: formData.message,
-          inquiry_type: formData.inquiryType,
-          created_at: new Date().toISOString()
-        }]);
-
-      if (error) {
-        console.error('Error submitting contact form:', error);
-        alert('Error submitting form. Please try again or contact us directly.');
-      } else {
-        setIsSubmitted(true);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error submitting form. Please try again or contact us directly.');
-    } finally {
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitted(true);
       setIsSubmitting(false);
-    }
+    }, 2000);
   };
 
   if (isSubmitted) {
@@ -110,8 +89,7 @@ const Contact = () => {
             📞 Contact & Support
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have questions about the Microsoft Fabric MVP Calculator, partner directory, 
-            or need help with your project? We're here to help!
+            Have questions about the Microsoft Fabric MVP Calculator or need help with your project? We're here to help!
           </p>
         </motion.div>
 
@@ -125,7 +103,7 @@ const Contact = () => {
               className="bg-white rounded-2xl p-8 shadow-lg"
             >
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h2>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Inquiry Type */}
                 <div>
@@ -145,11 +123,11 @@ const Contact = () => {
                         onClick={() => handleInputChange('inquiryType', type.value)}
                       >
                         <div className="flex items-center space-x-3">
-                          <SafeIcon 
-                            icon={type.icon} 
+                          <SafeIcon
+                            icon={type.icon}
                             className={`text-lg ${
                               formData.inquiryType === type.value ? 'text-fabric-blue' : 'text-gray-400'
-                            }`} 
+                            }`}
                           />
                           <span className="font-medium text-gray-900">{type.label}</span>
                         </div>
@@ -172,7 +150,7 @@ const Contact = () => {
                       required
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Email *
@@ -199,7 +177,7 @@ const Contact = () => {
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-fabric-blue focus:border-transparent"
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
                       Subject *
@@ -262,7 +240,6 @@ const Contact = () => {
               className="bg-white rounded-2xl p-6 shadow-lg"
             >
               <h3 className="text-xl font-bold text-gray-900 mb-6">Direct Contact</h3>
-              
               <div className="space-y-4">
                 <a
                   href="https://www.linkedin.com/in/m365-summit/"
@@ -278,7 +255,7 @@ const Contact = () => {
                     <div className="text-sm text-gray-500">Creator & Lead Developer</div>
                   </div>
                 </a>
-                
+
                 <a
                   href="https://www.linkedin.com/school/m365-show/"
                   target="_blank"
@@ -304,19 +281,14 @@ const Contact = () => {
               className="bg-white rounded-2xl p-6 shadow-lg"
             >
               <h3 className="text-xl font-bold text-gray-900 mb-6">Response Times</h3>
-              
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700">General Inquiries</span>
                   <span className="text-green-600 font-semibold">24 hours</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">Partner Support</span>
-                  <span className="text-green-600 font-semibold">12 hours</span>
-                </div>
-                <div className="flex items-center justify-between">
                   <span className="text-gray-700">Technical Issues</span>
-                  <span className="text-green-600 font-semibold">4 hours</span>
+                  <span className="text-green-600 font-semibold">12 hours</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700">Business Partnerships</span>
@@ -333,7 +305,6 @@ const Contact = () => {
               className="bg-white rounded-2xl p-6 shadow-lg"
             >
               <h3 className="text-xl font-bold text-gray-900 mb-6">Quick Answers</h3>
-              
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Calculator Issues?</h4>
@@ -341,20 +312,16 @@ const Contact = () => {
                     Try refreshing the page or clearing your browser cache
                   </p>
                 </div>
-                
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Partner Not Responding?</h4>
+                  <h4 className="font-semibold text-gray-900 mb-1">Need Custom Features?</h4>
                   <p className="text-sm text-gray-600">
-                    Contact us and we'll help connect you with alternative partners
+                    Contact us for custom calculator implementations or integrations
                   </p>
                 </div>
-                
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Want to Become a Partner?</h4>
+                  <h4 className="font-semibold text-gray-900 mb-1">Embedding Support?</h4>
                   <p className="text-sm text-gray-600">
-                    <a href="/partner-setup" className="text-fabric-blue hover:text-fabric-dark">
-                      Start your application here →
-                    </a>
+                    We provide full support for embedding the calculator on your website
                   </p>
                 </div>
               </div>
@@ -369,7 +336,7 @@ const Contact = () => {
             >
               <h3 className="text-xl font-bold text-gray-900 mb-4">Office Hours</h3>
               <p className="text-gray-700 mb-3">
-                We're available for urgent support:
+                We're available for support:
               </p>
               <div className="text-sm text-gray-600">
                 <div>Monday - Friday: 9:00 AM - 6:00 PM CET</div>

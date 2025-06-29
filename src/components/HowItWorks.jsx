@@ -3,14 +3,17 @@ import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiPlay, FiTarget, FiCheck, FiMail, FiUsers, FiTrendingUp, FiDownload, FiShare2 } = FiIcons;
+const {
+  FiPlay, FiTarget, FiCheck, FiMail, FiUsers, FiTrendingUp,
+  FiDownload, FiShare2
+} = FiIcons;
 
 const HowItWorks = () => {
   const steps = [
     {
       icon: FiTarget,
       title: 'Define Your MVP Requirements',
-      description: 'Use our comprehensive 16-step calculator to specify your Microsoft Fabric MVP needs, from data sources to analytics capabilities.',
+      description: 'Use our comprehensive calculator to specify your Microsoft Fabric MVP needs, from data sources to analytics capabilities.',
       details: [
         'Select Microsoft Fabric components',
         'Define data sources and volume',
@@ -41,34 +44,23 @@ const HowItWorks = () => {
       ]
     },
     {
-      icon: FiUsers,
-      title: 'Find Implementation Partners',
-      description: 'Browse our verified partner directory and select qualified consultants, freelancers, or solution providers.',
-      details: [
-        'Filter by services & expertise',
-        'View partner profiles & ratings',
-        'Check language support',
-        'Review case studies'
-      ]
-    },
-    {
       icon: FiMail,
-      title: 'Send Automated Outreach',
-      description: 'Use our pre-written email templates to contact selected partners with your complete project specifications.',
+      title: 'Get Ready-to-Send Templates',
+      description: 'Use our pre-written email templates to contact Microsoft consultants and implementation specialists.',
       details: [
         'Professional email templates',
-        'Automatic PDF attachment',
-        'BCC to multiple partners',
-        'Contact tracking'
+        'Complete project specifications',
+        'Cost breakdown summaries',
+        'Contact information ready'
       ]
     },
     {
       icon: FiCheck,
       title: 'Start Your MVP Development',
-      description: 'Begin development with clear specifications, qualified partners, and realistic timelines and budgets.',
+      description: 'Begin development with clear specifications, realistic timelines and budgets.',
       details: [
         'Clear project scope',
-        'Qualified implementation team',
+        'Implementation roadmap',
         'Realistic budget & timeline',
         'Success metrics defined'
       ]
@@ -88,13 +80,13 @@ const HowItWorks = () => {
     },
     {
       icon: FiUsers,
-      title: 'Qualified Partners Only',
-      description: 'Connect with verified Microsoft Fabric specialists'
+      title: 'Professional Documentation',
+      description: 'Investor-ready pitch decks and technical specifications'
     },
     {
       icon: FiShare2,
-      title: 'Professional Documentation',
-      description: 'Investor-ready pitch decks and technical specifications'
+      title: 'Ready-to-Use Templates',
+      description: 'Email templates and project specifications ready to share'
     }
   ];
 
@@ -112,8 +104,7 @@ const HowItWorks = () => {
             📘 How It Works
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From MVP requirements to implementation partner selection - 
-            streamline your Microsoft Fabric project planning in 6 simple steps
+            From MVP requirements to professional documentation - streamline your Microsoft Fabric project planning in 5 simple steps
           </p>
         </motion.div>
 
@@ -193,9 +184,8 @@ const HowItWorks = () => {
               📹 Watch How It Works
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              See the complete process in action - from requirements to partner selection
+              See the complete process in action - from requirements to professional documentation
             </p>
-            
             <div className="aspect-video bg-gradient-to-br from-fabric-blue/10 to-fabric-purple/10 rounded-xl flex items-center justify-center mb-8">
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -205,7 +195,6 @@ const HowItWorks = () => {
                 <SafeIcon icon={FiPlay} className="text-2xl ml-1" />
               </motion.button>
             </div>
-            
             <p className="text-sm text-gray-500">
               3-minute overview of the complete Microsoft Fabric MVP planning process
             </p>
@@ -222,7 +211,6 @@ const HowItWorks = () => {
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
             Frequently Asked Questions
           </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
@@ -230,24 +218,24 @@ const HowItWorks = () => {
                 answer: 'Our estimates are based on 1000+ real Microsoft Fabric implementations and updated monthly with current Azure pricing.'
               },
               {
-                question: 'Are the implementation partners verified?',
-                answer: 'Yes, all partners go through a verification process including Microsoft certifications, portfolio review, and reference checks.'
-              },
-              {
                 question: 'Can I modify the generated specifications?',
                 answer: 'Absolutely! The PDF specifications serve as a starting point. You can edit and customize them for your specific needs.'
               },
               {
                 question: 'Is there a cost to use the calculator?',
-                answer: 'The calculator and basic features are completely free. Partners pay for premium directory placement and enhanced features.'
+                answer: 'The calculator and all features are completely free to use for planning your Microsoft Fabric MVP.'
               },
               {
                 question: 'What if I need help with the requirements?',
-                answer: 'Our partner network includes consultants who specialize in requirements analysis and can help refine your MVP scope.'
+                answer: 'The calculator guides you through each step with detailed explanations and examples to help define your requirements.'
               },
               {
-                question: 'How do I track partner responses?',
-                answer: 'Partners respond directly to your email. We also provide optional lead tracking for premium users.'
+                question: 'Can I embed this calculator on my website?',
+                answer: 'Yes! We provide embed codes that you can use to add the calculator to your own website.'
+              },
+              {
+                question: 'How do I share the results with my team?',
+                answer: 'You can download the professional PDF documentation and use the provided email templates to share with stakeholders.'
               }
             ].map((faq, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
@@ -271,7 +259,6 @@ const HowItWorks = () => {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Join thousands of professionals who've used our platform to successfully plan and implement their Microsoft Fabric projects
           </p>
-          
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -281,14 +268,13 @@ const HowItWorks = () => {
             >
               Start MVP Calculator
             </motion.button>
-            
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.location.href = '/partners'}
+              onClick={() => window.location.href = '/contact'}
               className="px-8 py-4 border-2 border-fabric-blue text-fabric-blue font-semibold rounded-xl hover:bg-fabric-blue hover:text-white transition-all duration-300"
             >
-              Browse Partners
+              Get Support
             </motion.button>
           </div>
         </motion.div>
