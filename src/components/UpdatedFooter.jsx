@@ -30,36 +30,42 @@ const UpdatedFooter = () => {
     { label: 'LinkedIn Page', url: 'https://www.linkedin.com/school/m365-show/', icon: FiLinkedin, internal: false }
   ];
 
-  const seoPages = [
+  const seoLandingPages = [
     {
       label: 'Microsoft Fabric MVP Pricing',
       path: '/seo/microsoft-fabric-mvp-pricing',
-      icon: FiDollarSign
+      icon: FiDollarSign,
+      description: 'Complete pricing guide for MVP implementations'
     },
     {
       label: 'Cost Calculator Microsoft Fabric',
       path: '/seo/cost-calculator-microsoft-fabric',
-      icon: FiBarChart
+      icon: FiBarChart,
+      description: 'Professional cost calculator features & benefits'
     },
     {
       label: 'MVP Pitch Deck Generator',
       path: '/seo/mvp-pitch-deck-generator',
-      icon: FiFileText
+      icon: FiFileText,
+      description: 'Generate investor-ready pitch decks & documentation'
     },
     {
       label: 'Microsoft Fabric Implementation Costs',
       path: '/seo/microsoft-fabric-implementation-costs',
-      icon: FiTrendingUp
+      icon: FiTrendingUp,
+      description: 'Complete implementation cost breakdown & phases'
     },
     {
       label: 'Data Analytics Cost Estimation',
       path: '/seo/data-analytics-cost-estimation',
-      icon: FiSearch
+      icon: FiSearch,
+      description: 'Professional data analytics cost methodology'
     },
     {
       label: 'MVP Cost Estimator for Startups',
       path: '/seo/mvp-cost-estimator-startups',
-      icon: FiTarget
+      icon: FiTarget,
+      description: 'Startup-focused MVP cost estimation & funding'
     }
   ];
 
@@ -69,6 +75,14 @@ const UpdatedFooter = () => {
     } else {
       window.open(link.url, '_blank', 'noopener noreferrer');
     }
+  };
+
+  const handleSEOPageClick = (page) => {
+    handleNavigation(page.path);
+    // Smooth scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
   };
 
   return (
@@ -167,7 +181,7 @@ const UpdatedFooter = () => {
             </ul>
 
             <div className="mt-6">
-              <h4 className="font-semibold text-white mb-3">Embed Code</h4>
+              <h4 className="font-semibold text-white mb-3">📋 Embed Code</h4>
               <div className="bg-gray-800 p-3 rounded-lg text-xs">
                 <code className="text-gray-300">
                   &lt;iframe src="https://fabric.m365calc.com/#/embed"<br />
@@ -180,20 +194,57 @@ const UpdatedFooter = () => {
           </div>
         </div>
 
-        {/* SEO Keywords Section */}
+        {/* Professional Microsoft Fabric Resources Section */}
         <div className="border-t border-gray-800 pt-8 mt-8">
-          <h4 className="text-sm font-semibold text-gray-300 mb-4">🔍 SEO Keywords & Topics:</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {seoPages.map((page, index) => (
-              <button
+          <h4 className="text-lg font-semibold text-white mb-6 flex items-center">
+            <SafeIcon icon={FiSearch} className="mr-3 text-fabric-blue" />
+            💼 Professional Microsoft Fabric Resources
+          </h4>
+          <p className="text-gray-400 text-sm mb-6 max-w-3xl">
+            Explore our comprehensive collection of Microsoft Fabric cost calculators, pricing guides, and implementation resources. 
+            Each page provides detailed insights and professional tools for planning your MVP project.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {seoLandingPages.map((page, index) => (
+              <motion.button
                 key={index}
-                onClick={() => handleNavigation(page.path)}
-                className="flex items-center space-x-2 px-3 py-2 bg-gray-800 text-gray-300 text-xs rounded border border-gray-700 hover:border-fabric-blue hover:text-fabric-blue transition-colors text-left"
+                onClick={() => handleSEOPageClick(page)}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group p-4 bg-gray-800 hover:bg-gray-700 rounded-xl border border-gray-700 hover:border-fabric-blue transition-all duration-300 text-left"
               >
-                <SafeIcon icon={page.icon} className="text-sm" />
-                <span>{page.label}</span>
-              </button>
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-fabric-blue to-fabric-purple rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <SafeIcon icon={page.icon} className="text-white text-lg" />
+                  </div>
+                  <div className="flex-1">
+                    <h5 className="font-semibold text-white group-hover:text-fabric-blue transition-colors duration-300 mb-1">
+                      {page.label}
+                    </h5>
+                    <p className="text-gray-400 text-xs leading-relaxed">
+                      {page.description}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-3 flex items-center text-xs text-fabric-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span>Explore Resource</span>
+                  <SafeIcon icon={FiArrowUp} className="ml-1 transform rotate-45" />
+                </div>
+              </motion.button>
             ))}
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-6 p-4 bg-gradient-to-r from-fabric-blue/10 to-fabric-purple/10 rounded-lg border border-fabric-blue/20">
+            <div className="flex items-center space-x-3 mb-2">
+              <SafeIcon icon={FiTrendingUp} className="text-fabric-blue" />
+              <span className="font-semibold text-white text-sm">Professional Planning Resources</span>
+            </div>
+            <p className="text-gray-300 text-xs">
+              Access detailed cost breakdowns, implementation guides, and professional documentation for Microsoft Fabric MVP projects. 
+              Each resource is designed for startups, enterprises, and consultants planning data analytics initiatives.
+            </p>
           </div>
         </div>
 
