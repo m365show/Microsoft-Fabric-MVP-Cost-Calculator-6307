@@ -19,6 +19,10 @@ const UpdatedFooter = () => {
 
   const handleNavigation = (path) => {
     navigate(path);
+    // Smooth scroll to top after navigation
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
   };
 
   const currentYear = new Date().getFullYear();
@@ -79,10 +83,6 @@ const UpdatedFooter = () => {
 
   const handleSEOPageClick = (page) => {
     handleNavigation(page.path);
-    // Smooth scroll to top after navigation
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
   };
 
   return (
@@ -194,7 +194,7 @@ const UpdatedFooter = () => {
           </div>
         </div>
 
-        {/* Professional Microsoft Fabric Resources Section */}
+        {/* Professional Microsoft Fabric Resources Section - SEO LANDING PAGES */}
         <div className="border-t border-gray-800 pt-8 mt-8">
           <h4 className="text-lg font-semibold text-white mb-6 flex items-center">
             <SafeIcon icon={FiSearch} className="mr-3 text-fabric-blue" />
@@ -207,44 +207,72 @@ const UpdatedFooter = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {seoLandingPages.map((page, index) => (
-              <motion.button
+              <motion.div
                 key={index}
-                onClick={() => handleSEOPageClick(page)}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                className="group p-4 bg-gray-800 hover:bg-gray-700 rounded-xl border border-gray-700 hover:border-fabric-blue transition-all duration-300 text-left"
+                className="group p-4 bg-gray-800 hover:bg-gray-700 rounded-xl border border-gray-700 hover:border-fabric-blue transition-all duration-300"
               >
-                <div className="flex items-start space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-r from-fabric-blue to-fabric-purple rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                    <SafeIcon icon={page.icon} className="text-white text-lg" />
+                {/* Make the entire card a clickable link for SEO */}
+                <a
+                  href={`#${page.path}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleSEOPageClick(page);
+                  }}
+                  className="block text-left w-full h-full"
+                  title={page.description}
+                >
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-fabric-blue to-fabric-purple rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <SafeIcon icon={page.icon} className="text-white text-lg" />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="font-semibold text-white group-hover:text-fabric-blue transition-colors duration-300 mb-1">
+                        {page.label}
+                      </h5>
+                      <p className="text-gray-400 text-xs leading-relaxed">
+                        {page.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h5 className="font-semibold text-white group-hover:text-fabric-blue transition-colors duration-300 mb-1">
-                      {page.label}
-                    </h5>
-                    <p className="text-gray-400 text-xs leading-relaxed">
-                      {page.description}
-                    </p>
+                  <div className="mt-3 flex items-center text-xs text-fabric-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Explore Resource</span>
+                    <SafeIcon icon={FiArrowUp} className="ml-1 transform rotate-45" />
                   </div>
-                </div>
-                <div className="mt-3 flex items-center text-xs text-fabric-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span>Explore Resource</span>
-                  <SafeIcon icon={FiArrowUp} className="ml-1 transform rotate-45" />
-                </div>
-              </motion.button>
+                </a>
+              </motion.div>
             ))}
           </div>
 
-          {/* Additional Info */}
-          <div className="mt-6 p-4 bg-gradient-to-r from-fabric-blue/10 to-fabric-purple/10 rounded-lg border border-fabric-blue/20">
-            <div className="flex items-center space-x-3 mb-2">
+          {/* Text-based SEO Links for Google Crawling */}
+          <div className="mt-8 p-4 bg-gradient-to-r from-fabric-blue/10 to-fabric-purple/10 rounded-lg border border-fabric-blue/20">
+            <div className="flex items-center space-x-3 mb-4">
               <SafeIcon icon={FiTrendingUp} className="text-fabric-blue" />
               <span className="font-semibold text-white text-sm">Professional Planning Resources</span>
             </div>
-            <p className="text-gray-300 text-xs">
+            <p className="text-gray-300 text-xs mb-4">
               Access detailed cost breakdowns, implementation guides, and professional documentation for Microsoft Fabric MVP projects. 
               Each resource is designed for startups, enterprises, and consultants planning data analytics initiatives.
             </p>
+            
+            {/* Direct text links for SEO crawling */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 text-xs">
+              {seoLandingPages.map((page, index) => (
+                <a
+                  key={index}
+                  href={`#${page.path}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleSEOPageClick(page);
+                  }}
+                  className="text-fabric-blue hover:text-fabric-light transition-colors underline"
+                  title={page.description}
+                >
+                  {page.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
