@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 
-const { FiCloud, FiMail, FiLinkedin, FiHeart, FiArrowUp, FiExternalLink, FiHome, FiBook, FiPhone } = FiIcons;
+const {
+  FiCloud, FiMail, FiLinkedin, FiHeart, FiArrowUp, FiExternalLink,
+  FiHome, FiBook, FiPhone, FiSearch, FiTrendingUp, FiTarget,
+  FiDollarSign, FiFileText, FiBarChart
+} = FiIcons;
 
 const UpdatedFooter = () => {
   const navigate = useNavigate();
@@ -24,6 +28,39 @@ const UpdatedFooter = () => {
     { label: 'How It Works', path: '/how-it-works', icon: FiBook, internal: true },
     { label: 'Contact / Support', path: '/contact', icon: FiPhone, internal: true },
     { label: 'LinkedIn Page', url: 'https://www.linkedin.com/school/m365-show/', icon: FiLinkedin, internal: false }
+  ];
+
+  const seoPages = [
+    {
+      label: 'Microsoft Fabric MVP Pricing',
+      path: '/seo/microsoft-fabric-mvp-pricing',
+      icon: FiDollarSign
+    },
+    {
+      label: 'Cost Calculator Microsoft Fabric',
+      path: '/seo/cost-calculator-microsoft-fabric',
+      icon: FiBarChart
+    },
+    {
+      label: 'MVP Pitch Deck Generator',
+      path: '/seo/mvp-pitch-deck-generator',
+      icon: FiFileText
+    },
+    {
+      label: 'Microsoft Fabric Implementation Costs',
+      path: '/seo/microsoft-fabric-implementation-costs',
+      icon: FiTrendingUp
+    },
+    {
+      label: 'Data Analytics Cost Estimation',
+      path: '/seo/data-analytics-cost-estimation',
+      icon: FiSearch
+    },
+    {
+      label: 'MVP Cost Estimator for Startups',
+      path: '/seo/mvp-cost-estimator-startups',
+      icon: FiTarget
+    }
   ];
 
   const handleLinkClick = (link) => {
@@ -84,7 +121,6 @@ const UpdatedFooter = () => {
               >
                 <SafeIcon icon={FiLinkedin} className="text-lg" />
               </motion.a>
-
               <motion.a
                 href="https://www.linkedin.com/in/m365-summit/"
                 target="_blank"
@@ -147,24 +183,16 @@ const UpdatedFooter = () => {
         {/* SEO Keywords Section */}
         <div className="border-t border-gray-800 pt-8 mt-8">
           <h4 className="text-sm font-semibold text-gray-300 mb-4">🔍 SEO Keywords & Topics:</h4>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {[
-              'Microsoft Fabric MVP Pricing',
-              'Cost Calculator Microsoft Fabric',
-              'MVP Pitch Deck Generator',
-              'Microsoft Fabric Implementation Costs',
-              'Data Analytics Cost Estimation',
-              'MVP Cost Estimator for Startups',
-              'Microsoft Fabric Solutions Pricing',
-              'Enterprise Data Platform Costs',
-              'Fabric MVP Planning Tool'
-            ].map((keyword, index) => (
-              <span
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {seoPages.map((page, index) => (
+              <button
                 key={index}
-                className="px-2 py-1 bg-gray-800 text-gray-300 text-xs rounded border border-gray-700"
+                onClick={() => handleNavigation(page.path)}
+                className="flex items-center space-x-2 px-3 py-2 bg-gray-800 text-gray-300 text-xs rounded border border-gray-700 hover:border-fabric-blue hover:text-fabric-blue transition-colors text-left"
               >
-                {keyword}
-              </span>
+                <SafeIcon icon={page.icon} className="text-sm" />
+                <span>{page.label}</span>
+              </button>
             ))}
           </div>
         </div>
@@ -202,7 +230,6 @@ const UpdatedFooter = () => {
               <span>for the Microsoft community</span>
             </div>
           </div>
-
           <motion.button
             onClick={scrollToTop}
             whileHover={{ scale: 1.1, y: -2 }}
