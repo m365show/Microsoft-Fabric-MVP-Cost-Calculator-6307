@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
+import SafeIcon from '../../common/SafeIcon';
 
 const {
-  FiDollarSign, FiSettings, FiShield, FiDatabase, FiTrendingUp,
-  FiCheck, FiClock, FiUsers, FiZap
+  FiDollarSign, FiSettings, FiShield, FiDatabase, FiTrendingUp, FiCheck, FiClock, FiUsers, FiZap
 } = FiIcons;
 
 const MicrosoftFabricImplementationCosts = () => {
@@ -284,21 +283,36 @@ const MicrosoftFabricImplementationCosts = () => {
               {
                 title: 'Small Business',
                 description: 'Basic analytics for 50 users',
-                features: ['Single data source', 'Standard dashboards', 'Basic security', 'Email support'],
+                features: [
+                  'Single data source',
+                  'Standard dashboards',
+                  'Basic security',
+                  'Email support'
+                ],
                 cost: '$25,000 - $50,000',
                 timeline: '6-8 weeks'
               },
               {
                 title: 'Mid-Market Enterprise',
                 description: 'Advanced analytics for 500 users',
-                features: ['Multiple data sources', 'Advanced analytics', 'Enhanced security', 'Phone support'],
+                features: [
+                  'Multiple data sources',
+                  'Advanced analytics',
+                  'Enhanced security',
+                  'Phone support'
+                ],
                 cost: '$75,000 - $150,000',
                 timeline: '12-16 weeks'
               },
               {
                 title: 'Large Enterprise',
                 description: 'Global deployment for 5000+ users',
-                features: ['Complex integrations', 'AI/ML capabilities', 'Enterprise security', '24/7 support'],
+                features: [
+                  'Complex integrations',
+                  'AI/ML capabilities',
+                  'Enterprise security',
+                  '24/7 support'
+                ],
                 cost: '$200,000 - $500,000',
                 timeline: '20-24 weeks'
               }

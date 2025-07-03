@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
+import SafeIcon from '../../common/SafeIcon';
 
 const {
-  FiDollarSign, FiBarChart, FiZap, FiFileText, FiTrendingUp,
-  FiCheck, FiArrowRight, FiDatabase, FiSettings, FiShield
+  FiDollarSign, FiBarChart, FiZap, FiFileText, FiTrendingUp, FiCheck, FiArrowRight, FiDatabase, FiSettings, FiShield
 } = FiIcons;
 
 const MicrosoftFabricMVPPricing = () => {
@@ -145,19 +144,34 @@ const MicrosoftFabricMVPPricing = () => {
                 industry: 'Finance & Banking',
                 description: 'High compliance requirements and real-time analytics',
                 pricing: '$75,000 - $250,000',
-                features: ['Real-time fraud detection', 'Regulatory reporting', 'Risk analytics', 'Customer insights']
+                features: [
+                  'Real-time fraud detection',
+                  'Regulatory reporting',
+                  'Risk analytics',
+                  'Customer insights'
+                ]
               },
               {
                 industry: 'Healthcare',
                 description: 'HIPAA compliance and patient data analytics',
                 pricing: '$50,000 - $180,000',
-                features: ['Patient analytics', 'Clinical insights', 'Compliance monitoring', 'Operational efficiency']
+                features: [
+                  'Patient analytics',
+                  'Clinical insights',
+                  'Compliance monitoring',
+                  'Operational efficiency'
+                ]
               },
               {
                 industry: 'Retail & E-commerce',
                 description: 'Customer behavior and inventory optimization',
                 pricing: '$40,000 - $150,000',
-                features: ['Customer segmentation', 'Inventory optimization', 'Sales forecasting', 'Marketing analytics']
+                features: [
+                  'Customer segmentation',
+                  'Inventory optimization',
+                  'Sales forecasting',
+                  'Marketing analytics'
+                ]
               }
             ].map((example, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">

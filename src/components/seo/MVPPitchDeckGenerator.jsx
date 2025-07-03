@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
+import SafeIcon from '../../common/SafeIcon';
 
 const {
-  FiFileText, FiDownload, FiZap, FiCheck, FiUsers,
-  FiTrendingUp, FiTarget, FiMail, FiShare2
+  FiFileText, FiDownload, FiZap, FiCheck, FiUsers, FiTrendingUp, FiTarget, FiMail, FiShare2
 } = FiIcons;
 
 const MVPPitchDeckGenerator = () => {

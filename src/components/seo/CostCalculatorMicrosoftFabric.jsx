@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
+import SafeIcon from '../../common/SafeIcon';
 
 const {
-  FiCalculator, FiZap, FiTrendingUp, FiFileText, FiCheck,
-  FiDollarSign, FiClock, FiUsers, FiTarget
+  FiCalculator, FiZap, FiTrendingUp, FiFileText, FiCheck, FiDollarSign, FiClock, FiUsers, FiTarget
 } = FiIcons;
 
 const CostCalculatorMicrosoftFabric = () => {

@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
+import SafeIcon from '../../common/SafeIcon';
 
 const {
-  FiBarChart, FiDatabase, FiTrendingUp, FiZap, FiCheck,
-  FiDollarSign, FiSettings, FiShield, FiUsers
+  FiBarChart, FiDatabase, FiTrendingUp, FiZap, FiCheck, FiDollarSign, FiSettings, FiShield, FiUsers
 } = FiIcons;
 
 const DataAnalyticsCostEstimation = () => {
@@ -206,7 +205,12 @@ const DataAnalyticsCostEstimation = () => {
                 description: 'Small business reporting and dashboards',
                 users: '10-50 users',
                 dataVolume: '<1TB',
-                features: ['Standard dashboards', 'Basic reporting', 'Single data source', 'Email support'],
+                features: [
+                  'Standard dashboards',
+                  'Basic reporting',
+                  'Single data source',
+                  'Email support'
+                ],
                 annualCost: '$15,000 - $30,000'
               },
               {
@@ -214,7 +218,12 @@ const DataAnalyticsCostEstimation = () => {
                 description: 'Enterprise analytics with ML capabilities',
                 users: '100-500 users',
                 dataVolume: '1-10TB',
-                features: ['Advanced dashboards', 'Predictive analytics', 'Multiple data sources', 'Phone support'],
+                features: [
+                  'Advanced dashboards',
+                  'Predictive analytics',
+                  'Multiple data sources',
+                  'Phone support'
+                ],
                 annualCost: '$75,000 - $150,000'
               },
               {
@@ -222,7 +231,12 @@ const DataAnalyticsCostEstimation = () => {
                 description: 'Large-scale analytics platform',
                 users: '1000+ users',
                 dataVolume: '>10TB',
-                features: ['Real-time analytics', 'AI/ML platform', 'Complex integrations', '24/7 support'],
+                features: [
+                  'Real-time analytics',
+                  'AI/ML platform',
+                  'Complex integrations',
+                  '24/7 support'
+                ],
                 annualCost: '$200,000 - $500,000'
               }
             ].map((example, index) => (

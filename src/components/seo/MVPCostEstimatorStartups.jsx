@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
-import SafeIcon from '../common/SafeIcon';
+import SafeIcon from '../../common/SafeIcon';
 
 const {
-  FiTarget, FiZap, FiTrendingUp, FiDollarSign, FiCheck,
-  FiUsers, FiClock, FiFileText, FiSettings
+  FiTarget, FiZap, FiTrendingUp, FiDollarSign, FiCheck, FiUsers, FiClock, FiFileText, FiSettings
 } = FiIcons;
 
 const MVPCostEstimatorStartups = () => {
@@ -208,7 +207,12 @@ const MVPCostEstimatorStartups = () => {
                 title: 'SaaS Analytics Startup',
                 description: 'Customer analytics for SaaS platforms',
                 stage: 'Seed Stage',
-                features: ['Customer behavior tracking', 'Usage analytics', 'Basic reporting', 'API integration'],
+                features: [
+                  'Customer behavior tracking',
+                  'Usage analytics',
+                  'Basic reporting',
+                  'API integration'
+                ],
                 cost: '$20,000 - $35,000',
                 timeline: '6-8 weeks',
                 users: '10-100 customers'
@@ -217,7 +221,12 @@ const MVPCostEstimatorStartups = () => {
                 title: 'E-commerce Insights',
                 description: 'Sales and inventory analytics',
                 stage: 'Series A',
-                features: ['Sales dashboards', 'Inventory optimization', 'Customer segmentation', 'Predictive analytics'],
+                features: [
+                  'Sales dashboards',
+                  'Inventory optimization',
+                  'Customer segmentation',
+                  'Predictive analytics'
+                ],
                 cost: '$40,000 - $65,000',
                 timeline: '8-12 weeks',
                 users: '100-1000 customers'
@@ -226,7 +235,12 @@ const MVPCostEstimatorStartups = () => {
                 title: 'FinTech Analytics',
                 description: 'Financial data analytics platform',
                 stage: 'Series B',
-                features: ['Risk analytics', 'Compliance reporting', 'Real-time monitoring', 'Advanced security'],
+                features: [
+                  'Risk analytics',
+                  'Compliance reporting',
+                  'Real-time monitoring',
+                  'Advanced security'
+                ],
                 cost: '$75,000 - $120,000',
                 timeline: '12-16 weeks',
                 users: '1000+ customers'
